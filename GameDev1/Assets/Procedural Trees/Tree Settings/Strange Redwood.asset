@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20691b078b86994187f667dde9df1f3, type: 3}
+  m_Name: Strange Redwood
+  m_EditorClassIdentifier: 
+  seed: 0
+  maxTrunkCurveStart: 0.02
+  maxTrunkCurveEnd: 0.02
+  trunkAgeGrowthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.005859375
+      value: 0.87184525
+      inSlope: -54.295143
+      outSlope: -54.295143
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.018079337
+    - serializedVersion: 3
+      time: 0.32440916
+      value: 0.22439651
+      inSlope: -0.050478254
+      outSlope: -0.050478254
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 1
+      outWeight: 0.21416715
+    - serializedVersion: 3
+      time: 0.9339857
+      value: 0.17768535
+      inSlope: -0.6622464
+      outSlope: -0.6622464
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.08413672
+      outWeight: 0.33365506
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.01127493
+      outSlope: -0.01127493
+      tangentMode: 0
+      weightedMode: 1
+      inWeight: 0.3355231
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  trunkSplitChance: 0.001
+  trunkBranchChance: 0.06
+  trunkBranchChanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  branchBranchChance: 0.01
+  minBranchAngle: 0.68
+  maxBranchAngle: 0.5
+  curveBranches: 0
+  minTargetBranchAngle: 0
+  maxTargetBranchAngle: 0
+  branchTargetAngleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  branchAngleJitterCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0.35
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.35
+      inSlope: 0.35
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spawnBranchAtTopOfTrunk: 1
+  spawnLeafAtTopOfTrunk: 1
+  setLeafColorPerBranch: 0
+  preferredLeafAngle: 1.5
+  preferredLeafAngleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  branchLeafChance: 0.034
+  branchLeafChanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.020373339
+      outSlope: -0.020373339
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09530792
+    - serializedVersion: 3
+      time: 0.76830983
+      value: 0.988758
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.267587
+      outSlope: -4.267587
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  leafAgeGrowthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.005859375
+      value: 0.87184525
+      inSlope: -54.295143
+      outSlope: -54.295143
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.018079337
+    - serializedVersion: 3
+      time: 0.32440916
+      value: 0.22439651
+      inSlope: -0.050478254
+      outSlope: -0.050478254
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 1
+      outWeight: 0.21416715
+    - serializedVersion: 3
+      time: 0.9339857
+      value: 0.17768535
+      inSlope: -0.6622464
+      outSlope: -0.6622464
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.08413672
+      outWeight: 0.33365506
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.01127493
+      outSlope: -0.01127493
+      tangentMode: 0
+      weightedMode: 1
+      inWeight: 0.3355231
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  trunkSettings:
+    minSpeed: 0.4
+    maxSpeed: 0.4
+    startColors:
+    - {r: 0.50980395, g: 0.26634285, b: 0.22745098, a: 0}
+    endColors:
+    - {r: 0.3019608, g: 0.15942211, b: 0.12156862, a: 0}
+    blendColors: 0
+    blendSeparately: 0
+    minLifetime: 50
+    maxLifetime: 300
+    minCellLifetime: 3
+    maxCellLifetime: 3
+    ageGrowthMultiplier: 7
+    setColorByParticleLife: 0
+    colorJitter: {x: 0.02, y: 0.05, z: 0.06}
+  branchSettings:
+    minSpeed: 0.4
+    maxSpeed: 0.4
+    startColors:
+    - {r: 0.48235294, g: 0.2668332, b: 0.21960786, a: 0}
+    endColors:
+    - {r: 0.30980393, g: 0.13453434, b: 0.090196066, a: 0}
+    blendColors: 0
+    blendSeparately: 0
+    minLifetime: 50
+    maxLifetime: 120
+    minCellLifetime: 2
+    maxCellLifetime: 4
+    ageGrowthMultiplier: 1
+    setColorByParticleLife: 0
+    colorJitter: {x: 0.02, y: 0.05, z: 0.06}
+  leafSettings:
+    minSpeed: 0.4
+    maxSpeed: 0.4
+    startColors:
+    - {r: 0.56973565, g: 0.8666667, b: 0.3215686, a: 0}
+    endColors:
+    - {r: 0.23167354, g: 0.5377358, b: 0.1953097, a: 0}
+    blendColors: 0
+    blendSeparately: 0
+    minLifetime: 15
+    maxLifetime: 20
+    minCellLifetime: 7
+    maxCellLifetime: 10
+    ageGrowthMultiplier: 1
+    setColorByParticleLife: 1
+    colorJitter: {x: 0, y: 0, z: 0.01}

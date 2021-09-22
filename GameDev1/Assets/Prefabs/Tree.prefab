@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3082162063534473905}
   - component: {fileID: 3082162063534473906}
-  - component: {fileID: 3082162063534473904}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -84,19 +83,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3082162063534473904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3082162063534473911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f46a661285285f4da849787b6a92973, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderer: {fileID: 3082162063534473906}
-  growInstantly: 1
-  fullyGrown: 0
-  settings: {fileID: 11400000, guid: 9ffe52034f333e643a187b30d6d539d6, type: 2}

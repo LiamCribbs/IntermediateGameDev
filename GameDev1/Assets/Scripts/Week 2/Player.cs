@@ -47,6 +47,30 @@ public class Player : MonoBehaviour
     public Vector2 groundCheckSize;
     public float groundAngleCheckSize;
 
+    [Space(10)]
+    public bool gliding;
+    public Vector2 glideForce;
+    Vector2 glideVerticalVelocity;
+    public float glideDrag;
+    float glideAngle;
+    public float minGlideAngle, maxGlideAngle;
+    public float glideAngleSpeed;
+    public AnimationCurve glideSpeedCurve, glideDragCurve;
+    public float glideAcceleration;
+    public float gliderVerticalAcceleration;
+    public float glideGravity;
+    float lastJumpTime;
+
+    public Transform playerSprite;
+
+    [Space(10)]
+    public float minCameraSize;
+    public float maxCameraSize;
+    public float minDistance, maxDistance;
+    float distanceFromGround;
+    public float cameraSizeSpeed;
+    public new Camera camera;
+
     void Start()
     {
 
@@ -65,27 +89,64 @@ public class Player : MonoBehaviour
         }
     }
 
+    Vector2 GetGlideVelocity()
+    {
+        verticalSpeed = Vector2.zero;
+
+        glideAngle = Mathf.Lerp(glideAngle, Input.GetKey(KeyCode.W) ? maxGlideAngle : minGlideAngle, glideAngleSpeed * Time.deltaTime);
+        float normalizedAngle = Mathf.InverseLerp(minGlideAngle, maxGlideAngle, glideAngle);
+        float xVel = glideForce.x * glideSpeedCurve.Evaluate(normalizedAngle);
+        float yVel = glideForce.y * glideDragCurve.Evaluate(normalizedAngle);
+
+        playerSprite.transform.localEulerAngles = new Vector3(0f, 0f, glideAngle);
+
+        glideVerticalVelocity = Vector2.Lerp(glideVerticalVelocity + new Vector2(0f, glideGravity * Time.deltaTime), new Vector2(0f, glideForce.y), glideDragCurve.Evaluate(normalizedAngle));
+
+        return Vector2.Lerp(horizontalSpeed, playerSprite.up * new Vector2(xVel, 0f), glideAcceleration * Time.deltaTime);
+    }
+
     void Move()
     {
+        //gliding = !grounded;
+
         sideInput = Input.GetKey(KeyCode.D) ? 1f : Input.GetKey(KeyCode.A) ? -1f : 0f;
 
         // Accelerate/decelerate velocity
-        horizontalSpeed = Vector2.Lerp(horizontalSpeed, sideInput * speed * Vector2.right,
+        horizontalSpeed = gliding ? GetGlideVelocity() : Vector2.Lerp(horizontalSpeed, sideInput * speed * Vector2.right,
                 (sideInput == 0f ? (grounded ? groundDeceleration : airDeceleration) : (grounded ? groundAcceleration : airAcceleration)) * Time.deltaTime);
+
+        if (!gliding)
+        {
+            glideAngle = Mathf.Lerp(glideAngle, minGlideAngle, glideAngleSpeed * Time.deltaTime);
+        }
+
+        bool prevGrounded = grounded;
 
         // Accelerate y velocity with gravity
         if (grounded)
         {
             // Jump
+            gliding = false;
             verticalSpeed = Input.GetKeyDown(KeyCode.Space) ? Vector2.up * jumpSpeed : Vector2.zero;
+            playerSprite.transform.localRotation = Quaternion.identity;
         }
         else
         {
             verticalSpeed += gravity * Time.deltaTime;
+
+            if (Time.time - lastJumpTime > 0.2f)
+            {
+                gliding = true;
+            }
+
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    gliding = !gliding;
+            //}
         }
 
         // Set velocity from speed components (in local space)
-        velocity = horizontalSpeed + verticalSpeed;
+        velocity = horizontalSpeed + (gliding ? glideVerticalVelocity : verticalSpeed);
         //velocity = transform.right * xSpeed + transform.up * ySpeed;
 
         // Set initial transform
@@ -128,6 +189,17 @@ public class Player : MonoBehaviour
         else
         {
             grounded = false;
+        }
+
+        hit = Physics2D.Raycast(transform.position, Vector2.down, 1000f, GroundMask);
+        distanceFromGround = hit.distance;
+
+        float targetSize = Mathf.Lerp(minCameraSize, maxCameraSize, Mathf.InverseLerp(minDistance, maxDistance, distanceFromGround));
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetSize, cameraSizeSpeed * Time.deltaTime);
+
+        if (!grounded && prevGrounded)
+        {
+            lastJumpTime = Time.time;
         }
 
         // Check for collider underneath us

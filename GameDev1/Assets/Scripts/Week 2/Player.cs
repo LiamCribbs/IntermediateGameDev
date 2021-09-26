@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
     public Vector2 groundCheckSize;
     public float groundAngleCheckSize;
 
+    public float jumpCheckDistance;
+
     [Space(10)]
     public bool gliding;
     public Vector2 glideForce;
@@ -70,16 +72,10 @@ public class Player : MonoBehaviour
     float distanceFromGround;
     public float cameraSizeSpeed;
     public new Camera camera;
+    public Transform background;
 
-    void Start()
-    {
-
-    }
-
-    void OnDestroy()
-    {
-
-    }
+    [Space(10)]
+    public Animator animator;
 
     void Update()
     {
@@ -111,6 +107,17 @@ public class Player : MonoBehaviour
 
         sideInput = Input.GetKey(KeyCode.D) ? 1f : Input.GetKey(KeyCode.A) ? -1f : 0f;
 
+        bool walking = sideInput != 0f;
+        bool flying = gliding;
+        if (animator.GetBool("Walking") != walking)
+        {
+            animator.SetBool("Walking", walking);
+        }
+        if (animator.GetBool("Flying") != flying)
+        {
+            animator.SetBool("Flying", flying);
+        }
+
         // Accelerate/decelerate velocity
         horizontalSpeed = gliding ? GetGlideVelocity() : Vector2.Lerp(horizontalSpeed, sideInput * speed * Vector2.right,
                 (sideInput == 0f ? (grounded ? groundDeceleration : airDeceleration) : (grounded ? groundAcceleration : airAcceleration)) * Time.deltaTime);
@@ -127,7 +134,15 @@ public class Player : MonoBehaviour
         {
             // Jump
             gliding = false;
-            verticalSpeed = Input.GetKeyDown(KeyCode.Space) ? Vector2.up * jumpSpeed : Vector2.zero;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                verticalSpeed = Vector2.up * jumpSpeed;
+            }
+            else
+            {
+                verticalSpeed = Vector2.zero;
+            }
+
             playerSprite.transform.localRotation = Quaternion.identity;
         }
         else
@@ -137,6 +152,11 @@ public class Player : MonoBehaviour
             if (Time.time - lastJumpTime > 0.2f)
             {
                 gliding = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(transform.position, Vector2.down, jumpCheckDistance, GroundMask))
+            {
+                verticalSpeed = Vector2.up * jumpSpeed;
             }
 
             //if (Input.GetKeyDown(KeyCode.Space))
@@ -196,6 +216,8 @@ public class Player : MonoBehaviour
 
         float targetSize = Mathf.Lerp(minCameraSize, maxCameraSize, Mathf.InverseLerp(minDistance, maxDistance, distanceFromGround));
         camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetSize, cameraSizeSpeed * Time.deltaTime);
+        background.transform.localScale = Vector3.one * (camera.orthographicSize / minCameraSize);
+
 
         if (!grounded && prevGrounded)
         {

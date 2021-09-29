@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2b85ae262c18ddc4ab501d6ee242ee58
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Pangram
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2728871510868de4094c1bd4d288901e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

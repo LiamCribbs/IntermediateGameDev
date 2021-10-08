@@ -7,10 +7,10 @@ public class PlayerCamera : MonoBehaviour
     public Transform target;
 
     float followInterpolateAmount;
-    public float focusCentering;
-    public float followDistance;
+    public float focusCentering = 0.98f;
+    public float followDistance = 0.5f;
 
-    public Vector2 offset;
+    public Vector2 offset = new Vector2(0f, 0.09f);
 
     Vector2 focusPosition;
 

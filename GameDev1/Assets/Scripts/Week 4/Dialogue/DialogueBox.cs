@@ -7,7 +7,12 @@ using UnityEngine.Events;
 public class DialogueBox : MonoBehaviour
 {
     public new RectTransform transform;
+    public CanvasGroup group;
     public TextMeshProUGUI textMesh;
+
+    DialogueEmitter emitter;
+    Coroutine checkCompleteConditionCoroutine;
+    bool canComplete;
 
     string text;
 
@@ -19,49 +24,59 @@ public class DialogueBox : MonoBehaviour
     [Space(10)]
     public float writeDelay = 0.01f;
     Coroutine writeTextCoroutine;
+    const int MaxClearIterations = 12;
 
     [Space(10)]
     public AnimationCurve moveEffectIntensityCurve;
     Coroutine moveEffectCoroutine;
 
-    const float ShakeSoftIntensity = 1f;
-    const float ShakeHardIntensity = 1f;
-    const float FloatSoftIntensity = 1f;
-    const float FloatSoftInterval = 1f;
-    const float FloatHardIntensity = 1f;
-    const float FloatHardInterval = 1f;
+    const float ShakeSoftIntensity = 2f;
+    const float ShakeHardIntensity = 8f;
+    const float ShakeWaitTime = 0.05f;
+    static readonly WaitForSecondsRealtime shakeWaitForSeconds = new WaitForSecondsRealtime(ShakeWaitTime);
+    const float FloatSoftIntensity = 15f;
+    const float FloatSoftInterval = 0.8f;
+    const float FloatHardIntensity = 15f;
+    const float FloatHardInterval = 0.2f;
 
-    public void Initialze(DialogueData data, System.Action onFinishedWriting)
+    public void Initialze(DialogueEmitter emitter, DialogueData data)
     {
-        SetText(data.text, onFinishedWriting);
+        this.emitter = emitter;
+
+        textMesh.transform.localPosition = Vector3.zero;
+        canComplete = false;
+        this.ResetCoroutine(ref checkCompleteConditionCoroutine);
+
+        SetText(data.text);
 
         if (data.effect != DialogueData.Effect.None)
         {
             moveEffectCoroutine = StartCoroutine(
                 data.effectDuration > 0f ? data.effect switch
                 {
-                    DialogueData.Effect.ShakeSoft => ShakeText(ShakeSoftIntensity),
-                    DialogueData.Effect.ShakeHard => ShakeText(ShakeHardIntensity),
-                    DialogueData.Effect.FloatSoft => FloatText(FloatSoftIntensity, FloatSoftInterval),
-                    DialogueData.Effect.FloatHard => FloatText(FloatHardIntensity, FloatHardInterval)
-                }
-                :
-                data.effect switch
-                {
                     DialogueData.Effect.ShakeSoft => ShakeText(ShakeSoftIntensity, data.effectDuration, moveEffectIntensityCurve),
                     DialogueData.Effect.ShakeHard => ShakeText(ShakeHardIntensity, data.effectDuration, moveEffectIntensityCurve),
                     DialogueData.Effect.FloatSoft => FloatText(FloatSoftIntensity, FloatSoftInterval, data.effectDuration, moveEffectIntensityCurve),
                     DialogueData.Effect.FloatHard => FloatText(FloatHardIntensity, FloatHardInterval, data.effectDuration, moveEffectIntensityCurve)
+                }
+                :
+                data.effect switch
+                {
+                    DialogueData.Effect.ShakeSoft => ShakeText(ShakeSoftIntensity),
+                    DialogueData.Effect.ShakeHard => ShakeText(ShakeHardIntensity),
+                    DialogueData.Effect.FloatSoft => FloatText(FloatSoftIntensity, FloatSoftInterval),
+                    DialogueData.Effect.FloatHard => FloatText(FloatHardIntensity, FloatHardInterval)
+
                 });
         }
     }
 
-    public void SetText(string text, System.Action onFinishedWriting)
+    public void SetText(string text)
     {
         this.text = text;
 
         this.ResetCoroutine(ref moveEffectCoroutine);
-        this.RestartCoroutine(ref writeTextCoroutine, WriteText(writeDelay, onFinishedWriting));
+        this.RestartCoroutine(ref writeTextCoroutine, WriteText(writeDelay));
     }
 
     public void ClearText()
@@ -89,31 +104,75 @@ public class DialogueBox : MonoBehaviour
     {
         transform.sizeDelta = Vector2.Lerp(transform.sizeDelta, bounds, resizeSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        transform.position = DialogueManager.camera.WorldToScreenPoint(emitter.transform.position + emitter.dialogueBoxOffset);
+
+        if (canComplete && writeTextCoroutine ==  null)
         {
-            SetText("Hello there fellow human", null);
+            canComplete = false;
+            ClearText();
+        }
+    }
+
+    IEnumerator CheckCompleteCondition()
+    {
+        while (true)
+        {
+            if (emitter.currentDialogue.completeCondition.Invoke(emitter))
+            {
+                emitter.currentDialogue.onCompleteEvent.Invoke(emitter);
+                checkCompleteConditionCoroutine = null;
+
+                canComplete = true;
+
+                yield break;
+            }
+
+            yield return null;
         }
     }
 
     /// <summary>
     /// Write text over time
     /// </summary>
-    IEnumerator WriteText(float waitTime, System.Action onFinishedWriting)
+    IEnumerator WriteText(float waitTime)
     {
+        // Start checking completion condition
+        if (emitter.currentDialogue.alwaysCheckForCompletion)
+        {
+            checkCompleteConditionCoroutine = StartCoroutine(CheckCompleteCondition());
+        }
+
         WaitForSecondsRealtime wait = new WaitForSecondsRealtime(waitTime);
 
         string typedText = "";
 
+        // Write text one char at a time
         for (int i = 0; i < text.Length; i++)
         {
             typedText += text[i];
             textMesh.text = typedText;
             UpdateBounds();
 
+            if (i == 0)
+            {
+                DialogueManager.instance.PlayWriteSoundHeavy();
+            }
+            else
+            {
+                DialogueManager.instance.PlayWriteSound();
+            }
+
             yield return wait;
         }
 
-        onFinishedWriting?.Invoke();
+        // On finished event
+        emitter.currentDialogue.onFinishedWriting?.Invoke(emitter);
+
+        // Start checking completion condition
+        if (!emitter.currentDialogue.alwaysCheckForCompletion)
+        {
+            checkCompleteConditionCoroutine = StartCoroutine(CheckCompleteCondition());
+        }
 
         writeTextCoroutine = null;
     }
@@ -123,18 +182,35 @@ public class DialogueBox : MonoBehaviour
     /// </summary>
     IEnumerator ClearText(float waitTime)
     {
+        this.ResetCoroutine(ref checkCompleteConditionCoroutine);
+
         WaitForSecondsRealtime wait = new WaitForSecondsRealtime(waitTime);
 
+        text = textMesh.text;
         string typedText = text;
 
-        for (int i = 0; i < text.Length; i++)
+        int charsPerIteration = text.Length > MaxClearIterations ? text.Length / MaxClearIterations : 1;
+
+        // Delete text one char at a time
+        for (int i = 0; i < text.Length; i += charsPerIteration)
         {
-            typedText.Remove(typedText.Length - 1);
+            int startIndex = typedText.Length - charsPerIteration;
+            if (startIndex < 0)
+            {
+                charsPerIteration = typedText.Length;
+                startIndex = 0;
+            }
+
+            typedText = typedText.Remove(startIndex, charsPerIteration);
             textMesh.text = typedText;
             UpdateBounds();
 
+            DialogueManager.instance.PlayWriteSound();
+
             yield return wait;
         }
+
+        emitter.currentDialogue.onClearedEvent.Invoke(emitter);
 
         writeTextCoroutine = null;
     }
@@ -147,7 +223,7 @@ public class DialogueBox : MonoBehaviour
         while (true)
         {
             textMesh.transform.localPosition = Random.insideUnitCircle * intensity;
-            yield return null;
+            yield return shakeWaitForSeconds;
         }
     }
 
@@ -158,16 +234,23 @@ public class DialogueBox : MonoBehaviour
     {
         float speed = 1f / duration;
         float time = 0f;
+        float shakeWaitTime = 0f;
 
         while (time < 1f)
         {
+            shakeWaitTime += Time.unscaledDeltaTime;
+
             time += speed * Time.unscaledDeltaTime;
             if (time > 1f)
             {
                 time = 1f;
             }
 
-            textMesh.transform.localPosition = Random.insideUnitCircle * (intensity * intensityCurve.Evaluate(time));
+            if (shakeWaitTime > ShakeWaitTime)
+            {
+                shakeWaitTime = 0f;
+                textMesh.transform.localPosition = Random.insideUnitCircle * (intensity * intensityCurve.Evaluate(time));
+            }
 
             yield return null;
         }
@@ -196,7 +279,7 @@ public class DialogueBox : MonoBehaviour
                     time = 1f;
                 }
 
-                textMesh.transform.localPosition = Vector2.LerpUnclamped(initial, target, Pigeon.EaseFunctions.EaseInOutQuartic(time));
+                textMesh.transform.localPosition = Vector2.LerpUnclamped(initial, target, Pigeon.EaseFunctions.EaseInOutSin(time));
                 yield return null;
             }
         }
@@ -230,13 +313,12 @@ public class DialogueBox : MonoBehaviour
 
                 if (totalTime >= duration)
                 {
+                    moveEffectCoroutine = null;
                     yield break;
                 }
 
                 yield return null;
             }
         }
-
-        moveEffectCoroutine = null;
     }
 }

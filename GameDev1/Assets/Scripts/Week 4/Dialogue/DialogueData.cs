@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UltEvents;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,28 +10,34 @@ using UnityEditor;
 [System.Serializable]
 public class DialogueData
 {
+    [Tooltip("ID can be used to find this instance\n\nShould be unique")]
     public string id;
 
     [Space(10)]
-    public string text;
+    [TextArea(6, 20)] public string text;
+    [Tooltip("Effect that plays when the text writes")]
     public Effect effect;
+    [Tooltip("How long the effect lasts\n\nSet to 0 for infinite")]
     public float effectDuration;
 
     [Space(10)]
-    public UnityEvent<DialogueEmitter, DialogueData> completePredicate;
+    [Tooltip("Should we check completion condition as soon as the text starts writing or only after it's finished writing")]
+    public bool alwaysCheckForCompletion;
+    [Tooltip("Predicates for the text to clear")]
+    public Predicates completeCondition;
 
     [Space(10)]
+    [Tooltip("Fired just before the text starts writing")]
     public UnityEvent<DialogueEmitter> onStart;
+    [Tooltip("Fired when the text finishes writing")]
     public UnityEvent<DialogueEmitter> onFinishedWriting;
 
     [Space(10)]
+    [Tooltip("Fires when the complete condition is met")]
     public DialoguePredicateEvent onCompleteEvent;
+    [Space(10)]
+    [Tooltip("Fires when the text has finished clearing")]
     public DialoguePredicateEvent onClearedEvent;
-
-    public void MarkCompleted()
-    {
-
-    }
 
     public enum Effect
     {
@@ -40,32 +47,68 @@ public class DialogueData
 
 public enum Operator
 {
-    NONE, AND, OR, XOR
+    AND, OR, XOR
+}
+
+[System.Serializable]
+public class Predicates
+{
+    [System.Serializable]
+    public class Predicate
+    {
+        public UltEvent<DialogueEmitter> predicate;
+        public Operator Operator;
+    }
+
+    public Predicate[] predicates;
+
+    public static bool Operate(bool a, bool b, Operator op)
+    {
+        return op switch
+        {
+            Operator.AND => a && b,
+            Operator.OR => a || b,
+            Operator.XOR => a ^ b
+        };
+    }
+
+    public bool Invoke(DialogueEmitter emitter)
+    {
+        if (predicates != null && predicates.Length > 0)
+        {
+            var predicate = predicates[0].predicate;
+            predicate.Invoke(emitter);
+            bool state = (bool)predicate.returnedValues[0];
+
+            for (int i = 1; i < predicates.Length; i++)
+            {
+                predicate = predicates[i].predicate;
+                predicate.Invoke(emitter);
+                state = Operate(state, (bool)predicate.returnedValues[i], predicates[i - 1].Operator);
+            }
+
+            if (!state)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 [System.Serializable]
 public class DialoguePredicateEvent
 {
     public UnityEvent<DialogueEmitter> action;
+    [Space(-20)]
+    public Predicates predicates;
 
-    public Predicate[] predicates;
-
-    [System.Serializable]
-    public class Predicate
+    public void Invoke(DialogueEmitter emitter)
     {
-        public UnityEvent predicate;
-        public Operator Operator;
-    }
-
-    public void Invoke()
-    {
-        if (predicates.Length > 0)
+        if (predicates.Invoke(emitter))
         {
-            //bool state = predicates[0].predicate.Invoke();
-            for (int i = 0; i < predicates.Length; i++)
-            {
-
-            }
+            action?.Invoke(emitter);
         }
     }
 }

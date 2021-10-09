@@ -18,6 +18,7 @@ public static class CoroutineUtil
     {
         if (coroutine != null)
         {
+            mb.StopCoroutine(coroutine);
             coroutine = null;
         }
     }

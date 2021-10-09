@@ -5,16 +5,24 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+    public static new Camera camera;
 
     static Stack<DialogueBox> pool;
 
     public GameObject dialogueBoxPrefab;
     public RectTransform canvas;
 
+    public TreasureHuntPlayer player;
+
+    public new AudioSource audio;
+    public AudioClip[] writeClips;
+
     void Awake()
     {
         instance = this;
         pool = new Stack<DialogueBox>(2);
+
+        camera = Camera.main;
     }
 
     /// <summary>
@@ -28,5 +36,15 @@ public class DialogueManager : MonoBehaviour
         }
 
         return pool.Pop();
+    }
+
+    public void PlayWriteSound()
+    {
+        audio.PlayOneShot(writeClips[Random.Range(2, writeClips.Length)]);
+    }
+
+    public void PlayWriteSoundHeavy()
+    {
+        audio.PlayOneShot(writeClips[Random.Range(0, 2)]);
     }
 }

@@ -39,13 +39,47 @@ public class DialogueBox : MonoBehaviour
     const float FloatHardIntensity = 15f;
     const float FloatHardInterval = 0.2f;
 
+    public bool Active
+    {
+        get => gameObject.activeInHierarchy;
+    }
+
+    public void RestartCoroutine(ref Coroutine coroutine, IEnumerator method)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+
+        coroutine = StartCoroutine(method);
+    }
+
+    public void ResetCoroutine(ref Coroutine coroutine)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }
+    }
+
+    new Coroutine StartCoroutine(IEnumerator routine)
+    {
+        return DialogueManager.instance.StartCoroutine(routine);
+    }
+
+    new void StopCoroutine(Coroutine routine)
+    {
+        DialogueManager.instance.StopCoroutine(routine);
+    }
+
     public void Initialze(DialogueEmitter emitter, DialogueData data)
     {
         this.emitter = emitter;
 
         textMesh.transform.localPosition = Vector3.zero;
         canComplete = false;
-        this.ResetCoroutine(ref checkCompleteConditionCoroutine);
+        ResetCoroutine(ref checkCompleteConditionCoroutine);
 
         SetText(data.text);
 
@@ -75,13 +109,13 @@ public class DialogueBox : MonoBehaviour
     {
         this.text = text;
 
-        this.ResetCoroutine(ref moveEffectCoroutine);
-        this.RestartCoroutine(ref writeTextCoroutine, WriteText(writeDelay));
+        ResetCoroutine(ref moveEffectCoroutine);
+        RestartCoroutine(ref writeTextCoroutine, WriteText(writeDelay));
     }
 
     public void ClearText()
     {
-        this.RestartCoroutine(ref writeTextCoroutine, ClearText(writeDelay));
+        RestartCoroutine(ref writeTextCoroutine, ClearText(writeDelay));
     }
 
     void UpdateBounds()
@@ -117,6 +151,11 @@ public class DialogueBox : MonoBehaviour
     {
         while (true)
         {
+            while (!Active)
+            {
+                yield return null;
+            }
+
             if (emitter.currentDialogue.completeCondition.Invoke(emitter))
             {
                 emitter.currentDialogue.onCompleteEvent.Invoke(emitter);
@@ -149,6 +188,11 @@ public class DialogueBox : MonoBehaviour
         // Write text one char at a time
         for (int i = 0; i < text.Length; i++)
         {
+            while (!Active)
+            {
+                yield return null;
+            }
+
             typedText += text[i];
             textMesh.text = typedText;
             UpdateBounds();
@@ -194,6 +238,11 @@ public class DialogueBox : MonoBehaviour
         // Delete text one char at a time
         for (int i = 0; i < text.Length; i += charsPerIteration)
         {
+            while (!Active)
+            {
+                yield return null;
+            }
+
             int startIndex = typedText.Length - charsPerIteration;
             if (startIndex < 0)
             {
@@ -222,6 +271,11 @@ public class DialogueBox : MonoBehaviour
     {
         while (true)
         {
+            while (!Active)
+            {
+                yield return null;
+            }
+
             textMesh.transform.localPosition = Random.insideUnitCircle * intensity;
             yield return shakeWaitForSeconds;
         }
@@ -238,6 +292,11 @@ public class DialogueBox : MonoBehaviour
 
         while (time < 1f)
         {
+            while (!Active)
+            {
+                yield return null;
+            }
+
             shakeWaitTime += Time.unscaledDeltaTime;
 
             time += speed * Time.unscaledDeltaTime;
@@ -273,6 +332,11 @@ public class DialogueBox : MonoBehaviour
 
             while (time < 1f)
             {
+                while (!Active)
+                {
+                    yield return null;
+                }
+
                 time += speed * Time.unscaledDeltaTime;
                 if (time > 1f)
                 {
@@ -295,6 +359,11 @@ public class DialogueBox : MonoBehaviour
 
         while (true)
         {
+            while (!Active)
+            {
+                yield return null;
+            }
+
             Vector2 initial = textMesh.transform.localPosition;
             Vector2 target = Random.insideUnitCircle * intensity;
             float time = 0f;

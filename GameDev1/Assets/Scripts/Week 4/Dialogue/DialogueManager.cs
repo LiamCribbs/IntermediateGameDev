@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueBoxPrefab;
     public RectTransform canvas;
 
-    public TreasureHuntPlayer player;
+    public PlayerMove player;
 
     public new AudioSource audio;
     public AudioClip[] writeClips;

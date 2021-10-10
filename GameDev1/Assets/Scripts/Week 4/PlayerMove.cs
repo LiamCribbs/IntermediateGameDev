@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreasureHuntPlayer : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public const int GroundMask = ~(1 << 3);
 

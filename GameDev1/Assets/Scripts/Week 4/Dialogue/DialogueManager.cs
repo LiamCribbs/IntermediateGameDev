@@ -38,6 +38,15 @@ public class DialogueManager : MonoBehaviour
         return pool.Pop();
     }
 
+    /// <summary>
+    /// Return a dialogue box to the pool
+    /// </summary>
+    public static void ReturnBox(DialogueBox box)
+    {
+        box.gameObject.SetActive(false);
+        pool.Push(box);
+    }
+
     public void PlayWriteSound()
     {
         audio.PlayOneShot(writeClips[Random.Range(2, writeClips.Length)]);

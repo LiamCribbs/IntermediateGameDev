@@ -39,6 +39,12 @@ public class DialogueBox : MonoBehaviour
     const float FloatHardIntensity = 15f;
     const float FloatHardInterval = 0.2f;
 
+    [System.NonSerialized] public float lastFinishedWritingTime;
+    static readonly WaitForSecondsRealtime pauseCharacterWaitTime = new WaitForSecondsRealtime(0.5f);
+
+    const string AlienScriptStartTag = "<i><color=#ffc949>";
+    const string AlienScriptEndTag = "</i></color>";
+
     public bool Active
     {
         get => gameObject.activeInHierarchy;
@@ -108,6 +114,7 @@ public class DialogueBox : MonoBehaviour
     public void SetText(string text)
     {
         this.text = text;
+        lastFinishedWritingTime = -1f;
 
         ResetCoroutine(ref moveEffectCoroutine);
         RestartCoroutine(ref writeTextCoroutine, WriteText(writeDelay));
@@ -193,10 +200,6 @@ public class DialogueBox : MonoBehaviour
                 yield return null;
             }
 
-            typedText += text[i];
-            textMesh.text = typedText;
-            UpdateBounds();
-
             if (i == 0)
             {
                 DialogueManager.instance.PlayWriteSoundHeavy();
@@ -206,8 +209,53 @@ public class DialogueBox : MonoBehaviour
                 DialogueManager.instance.PlayWriteSound();
             }
 
+            char letter = text[i];
+            if (letter == '\\' && text[i + 1] == 'w')
+            {
+                yield return pauseCharacterWaitTime;
+
+                i++;
+                continue;
+            }
+
+            if (letter == '<')
+            {
+                int j;
+                for (j = i + 1; j < text.Length; j++)
+                {
+                    if (text[j] == '>')
+                    {
+                        break;
+                    }
+                }
+
+                string tag = text.Substring(i, j - i + 1);
+                if (tag == "<i>")
+                {
+                    tag = AlienScriptStartTag;
+                }
+                else if (tag == "</i>")
+                {
+                    tag = AlienScriptEndTag;
+                }
+
+                typedText += tag;
+
+                i = j;
+            }
+            else
+            {
+                typedText += text[i];
+            }
+
+            //typedText += text[i];
+            textMesh.text = typedText;
+            UpdateBounds();
+
             yield return wait;
         }
+
+        lastFinishedWritingTime = Time.unscaledTime;
 
         // On finished event
         emitter.currentDialogue.onFinishedWriting?.Invoke(emitter);

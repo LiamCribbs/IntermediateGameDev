@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
+    public static FollowCamera instance;
+
     public new Camera camera;
 
     public Transform target;
@@ -18,6 +20,11 @@ public class FollowCamera : MonoBehaviour
 
     Vector2 focusPosition;
     Vector2 effectedPos;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {

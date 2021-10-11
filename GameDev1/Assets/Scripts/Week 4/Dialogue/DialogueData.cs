@@ -7,10 +7,6 @@ using UltEvents;
 [System.Serializable]
 public class DialogueData
 {
-    [Tooltip("ID can be used to find this instance\n\nShould be unique")]
-    public string id;
-
-    [Space(10)]
     [TextArea(6, 20)] public string text;
     [Tooltip("Effect that plays when the text writes")]
     public Effect effect;

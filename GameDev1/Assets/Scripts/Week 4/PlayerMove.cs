@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     public const int GroundMask = ~(1 << 3);
 
+    public static PlayerMove instance;
+
     public new Rigidbody2D rigidbody;
 
     [Space(10)]
@@ -23,14 +25,27 @@ public class PlayerMove : MonoBehaviour
     float sideInput;
     bool jumpInput;
 
+    public bool disable;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Update()
     {
-        GetInput();
+        if (!disable)
+        {
+            GetInput();
+        }
     }
 
     void FixedUpdate()
     {
-        Move();
+        if (!disable)
+        {
+            Move();
+        }
     }
 
     void GetInput()

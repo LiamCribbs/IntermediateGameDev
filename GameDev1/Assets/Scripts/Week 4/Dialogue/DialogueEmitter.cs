@@ -7,28 +7,27 @@ using Pigeon.Math;
 public class DialogueEmitter : MonoBehaviour
 {
     public Vector3 dialogueBoxOffset;
+    public Vector2 cameraBoundsCheckPadding;
 
     public float visibleDistance = 4f;
     public float visibleFalloffDistance = 2f;
 
-    [System.NonSerialized] DialogueBox dialogueBox;
+    [System.NonSerialized] protected DialogueBox dialogueBox;
     [System.NonSerialized] public DialogueData currentDialogue;
+
+    [Space(30)]
+    public Predicates startDialoguePredicate;
+    protected bool dialogueStarted;
 
     [Space(30)]
     public DialogueData[] dialogue;
 
-    public void ShowDialogue(string id)
-    {
-        for (int i = 0; i < dialogue.Length; i++)
-        {
-            if (dialogue[i].id == id)
-            {
-                ShowDialogue(dialogue[i]);
-                return;
-            }
-        }
+    const float WaitTimeAfterWritingShort = 0.5f;
+    const float WaitTimeAfterWritingMedium = 1.5f;
 
-        throw new System.Exception($"Dialogue not found with id of '{id}'");
+    public void ShowDialogue(int id)
+    {
+        ShowDialogue(dialogue[id]);
     }
 
     public void ShowDialogue(DialogueData data)
@@ -44,18 +43,63 @@ public class DialogueEmitter : MonoBehaviour
         dialogueBox.Initialze(this, data);
     }
 
+    public void ShowNextDialogue()
+    {
+        ShowDialogue(dialogue[System.Array.IndexOf(dialogue, currentDialogue) + 1]);
+    }
+
+    public void ReturnBox()
+    {
+        DialogueManager.ReturnBox(dialogueBox);
+        dialogueBox = null;
+    }
+
     public bool IsLeftClickPressed()
     {
         return Input.GetKeyDown(KeyCode.Mouse0);
     }
 
-    void Start()
+    public bool WaitAfterWriting(float waitTime)
     {
-        ShowDialogue(dialogue[0]);
+        return dialogueBox.lastFinishedWritingTime > 0f && Time.unscaledTime - dialogueBox.lastFinishedWritingTime > waitTime;
+    }
+
+    public bool WaitAfterWritingShort()
+    {
+        return dialogueBox.lastFinishedWritingTime > 0f && Time.unscaledTime - dialogueBox.lastFinishedWritingTime > WaitTimeAfterWritingShort;
+    }
+
+    public bool WaitAfterWritingMedium()
+    {
+        return dialogueBox.lastFinishedWritingTime > 0f && Time.unscaledTime - dialogueBox.lastFinishedWritingTime > WaitTimeAfterWritingMedium;
+    }
+
+    public bool IsPlayerWithinRange()
+    {
+        return ((Vector2)DialogueManager.instance.player.transform.position - (Vector2)transform.position).MagFast() < visibleDistance + visibleFalloffDistance;
+    }
+
+    public bool False() => false;
+    
+    public bool IsWithinCameraBounds()
+    {
+        float width = (float)Screen.width / Screen.height * FollowCamera.instance.camera.orthographicSize;
+        Vector2 camSize = new Vector2(width, width * Screen.height / Screen.width);
+        Vector2 camPos = FollowCamera.instance.transform.position;
+        Vector2 pos = transform.position;
+
+        return pos.x < camPos.x + camSize.x - cameraBoundsCheckPadding.x && pos.x > camPos.x - camSize.x + cameraBoundsCheckPadding.x &&
+            pos.y < camPos.y + camSize.y - cameraBoundsCheckPadding.y && pos.y > camPos.y - camSize.y + cameraBoundsCheckPadding.y;
     }
 
     void Update()
     {
+        if (!dialogueStarted && startDialoguePredicate.Invoke(this))
+        {
+            dialogueStarted = true;
+            ShowDialogue(dialogue[0]);
+        }
+
         SetBoxAlpha();
     }
 
@@ -66,7 +110,7 @@ public class DialogueEmitter : MonoBehaviour
             return;
         }
 
-        float distance = (DialogueManager.instance.player.transform.position - transform.position).MagFast();
+        float distance = ((Vector2)DialogueManager.instance.player.transform.position - (Vector2)transform.position).MagFast();
 
         // Set alpha according to distance from player
         if (distance < visibleDistance)

@@ -48,6 +48,21 @@ public class DialogueEmitter : MonoBehaviour
         ShowDialogue(dialogue[System.Array.IndexOf(dialogue, currentDialogue) + 1]);
     }
 
+    public void ShowRandomDialogue()
+    {
+        DialogueData data;
+        while (true)
+        {
+            data = dialogue[UnityEngine.Random.Range(0, dialogue.Length)];
+            if (data != currentDialogue)
+            {
+                break;
+            }
+        }
+
+        ShowDialogue(data);
+    }
+
     public void ReturnBox()
     {
         DialogueManager.ReturnBox(dialogueBox);

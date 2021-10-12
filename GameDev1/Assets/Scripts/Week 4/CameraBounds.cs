@@ -10,9 +10,11 @@ public class CameraBounds : MonoBehaviour
 
     public Vector2 size;
 
+#if UNITY_EDITOR
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = DEBUG_COLOR;
         Gizmos.DrawWireCube(transform.position, size * 2f);
     }
+#endif
 }

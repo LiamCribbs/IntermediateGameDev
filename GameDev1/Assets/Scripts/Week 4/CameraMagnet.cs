@@ -13,6 +13,7 @@ public class CameraMagnet : CameraBounds
 
     public AnimationCurve pullStrength = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
+#if UNITY_EDITOR
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -27,4 +28,5 @@ public class CameraMagnet : CameraBounds
     {
         DEBUG_COLOR = new Color(0.2f, 0.58f, 1f);
     }
+#endif
 }

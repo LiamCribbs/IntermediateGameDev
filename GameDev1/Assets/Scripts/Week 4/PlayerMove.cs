@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     public static PlayerMove instance;
 
     public new Rigidbody2D rigidbody;
+    public new Collider2D collider;
 
     [Space(10)]
     public float speed;

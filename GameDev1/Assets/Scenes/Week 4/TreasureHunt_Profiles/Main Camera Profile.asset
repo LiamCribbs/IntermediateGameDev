@@ -84,7 +84,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: {x: 0.008, y: 0.008, z: 1.7777778, w: 9}
+    value: {x: 0.007, y: 0.007, z: 1.7777778, w: 9}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,10 @@ public class DialogueManager : MonoBehaviour
             pool.Push(Instantiate(instance.dialogueBoxPrefab, instance.canvas).GetComponent<DialogueBox>());
         }
 
-        return pool.Pop();
+        var box = pool.Pop();
+        box.gameObject.SetActive(true);
+
+        return box;
     }
 
     /// <summary>

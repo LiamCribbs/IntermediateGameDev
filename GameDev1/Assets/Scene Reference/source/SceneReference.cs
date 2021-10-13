@@ -26,6 +26,62 @@ using UnityEditor.VersionControl;
 // as modified despite having just reverted. This only happens on the fist time, and reverting again fix it. 
 // Under the hood the state is still always valid and serialized correctly regardless.
 
+public static class SceneHelper
+{
+    static string sceneToOpen;
+
+    public static void StartScene(string sceneName)
+    {
+#if UNITY_EDITOR
+        if (Application.isPlaying)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            if (EditorApplication.isPlaying)
+            {
+                EditorApplication.isPlaying = false;
+            }
+
+            sceneToOpen = sceneName;
+            EditorApplication.update += OnUpdate;
+        }
+#else
+			SceneManager.LoadScene(sceneName);
+#endif
+    }
+
+    static void OnUpdate()
+    {
+        if (sceneToOpen == null ||
+            EditorApplication.isPlaying || EditorApplication.isPaused ||
+            EditorApplication.isCompiling || EditorApplication.isPlayingOrWillChangePlaymode)
+        {
+            return;
+        }
+
+        EditorApplication.update -= OnUpdate;
+
+        if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            // need to get scene via search because the path to the scene
+            // file contains the package version so it'll change over time
+            string[] guids = AssetDatabase.FindAssets("t:scene " + sceneToOpen, null);
+            if (guids.Length == 0)
+            {
+                Debug.LogWarning("Couldn't find scene file");
+            }
+            else
+            {
+                string scenePath = AssetDatabase.GUIDToAssetPath(guids[0]);
+                EditorSceneManager.OpenScene(scenePath);
+                EditorApplication.isPlaying = true;
+            }
+        }
+        sceneToOpen = null;
+    }
+}
 
 /// <summary>
 /// A wrapper that provides the means to safely serialize Scene Asset References.
@@ -178,7 +234,7 @@ public class SceneReferencePropertyDrawer : PropertyDrawer
         {
             // Here we add the foldout using a single line height, the label and change
             // the value of property.isExpanded
-            property.isExpanded = true; //EditorGUI.Foldout(new Rect(position.x, position.y, position.width, lineHeight), property.isExpanded, label, true);
+            property.isExpanded = true;// EditorGUI.Foldout(new Rect(position.x, position.y, position.width, lineHeight), property.isExpanded, label, true);
 
             // Now you want to draw the content only if you unfold this property
             if (property.isExpanded)
@@ -202,12 +258,22 @@ public class SceneReferencePropertyDrawer : PropertyDrawer
                 // Draw the main Object field
                 label.tooltip = "The actual Scene Asset reference.\nOn serialize this is also stored as the asset's path.";
 
+                EditorGUI.LabelField(position, property.displayName);
+                position.x += 200;
+                position.width -= 300;
 
                 var sceneControlID = GUIUtility.GetControlID(FocusType.Passive);
                 EditorGUI.BeginChangeCheck();
                 {
                     // removed the label here since we already have it in the foldout before
                     sceneAssetProperty.objectReferenceValue = EditorGUI.ObjectField(position, sceneAssetProperty.objectReferenceValue, typeof(SceneAsset), false);
+                    
+                    //position.x += position.width;
+                    //position.width -= 100;
+                    //if (GUI.Button(position, "Load"))
+                    //{
+                    //    SceneHelper.StartScene(GetScenePathProperty(property).stringValue);
+                    //}
                 }
                 var buildScene = BuildUtils.GetBuildScene(sceneAssetProperty.objectReferenceValue);
                 if (EditorGUI.EndChangeCheck())

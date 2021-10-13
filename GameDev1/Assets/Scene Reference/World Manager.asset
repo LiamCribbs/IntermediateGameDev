@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cf704f1a2cb3147b77444aa0c441d2, type: 3}
   m_Name: World Manager
   m_EditorClassIdentifier: 
-  scene:
-    sceneAsset: {fileID: 0}
-    scenePath: 
+  scenes:
+  - sceneAsset: {fileID: 102900000, guid: 5053e3699f2cf9640b7740592702b213, type: 3}
+    scenePath: Assets/Scenes/Week 4/Introduction.unity
+  - sceneAsset: {fileID: 102900000, guid: f079514b3fcfaff42b3ea52e97825fda, type: 3}
+    scenePath: Assets/Scenes/Week 4/Street1.unity

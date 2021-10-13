@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SceneTrigger : MonoBehaviour
 {
-    public int sceneIndex;
+    public SceneReference scene;
+    public int entrance;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other == PlayerMove.instance.collider)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+            GameManager.LoadScene(scene, entrance);
         }
     }
 }

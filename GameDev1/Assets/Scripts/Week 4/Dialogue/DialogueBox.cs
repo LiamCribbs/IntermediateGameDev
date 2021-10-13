@@ -274,7 +274,7 @@ public class DialogueBox : MonoBehaviour
     /// </summary>
     IEnumerator ClearText(float waitTime)
     {
-        this.ResetCoroutine(ref checkCompleteConditionCoroutine);
+        ResetCoroutine(ref checkCompleteConditionCoroutine);
 
         WaitForSecondsRealtime wait = new WaitForSecondsRealtime(waitTime);
 

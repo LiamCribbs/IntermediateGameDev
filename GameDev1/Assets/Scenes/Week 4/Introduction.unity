@@ -1659,6 +1659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 632228864}
+  - component: {fileID: 632228867}
   - component: {fileID: 632228863}
   - component: {fileID: 632228866}
   - component: {fileID: 632228865}
@@ -1855,6 +1856,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxPrefab: {fileID: 5452103795981120186, guid: be0342819170c06498eb5c48a6fdb2ee, type: 3}
   canvas: {fileID: 313019122}
+--- !u!114 &632228867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632228862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1b2e27a9aa6de428155efbcac0ccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrances: []
 --- !u!1 &642816640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +3058,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9434b6da505681a4fbf3da0b2b27fe0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 1
+  scene:
+    sceneAsset: {fileID: 102900000, guid: f079514b3fcfaff42b3ea52e97825fda, type: 3}
+    scenePath: Assets/Scenes/Week 4/Street1.unity
+  entrance: 0
 --- !u!61 &1551325159
 BoxCollider2D:
   m_ObjectHideFlags: 0

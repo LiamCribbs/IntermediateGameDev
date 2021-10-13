@@ -1,30 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    public static int partsCollected;
-    public TMPro.TextMeshProUGUI partsCollectedText;
-    public TMPro.TextMeshProUGUI partsCollectedTextAlien;
-    public GameObject winText;
 
     void Awake()
     {
         instance = this;
     }
 
-    public void CollectPart()
-    {
-        partsCollected++;
-        partsCollectedText.text = partsCollected.ToString();
-        partsCollectedTextAlien.text = partsCollectedText.text;
+    public static int chosenEntrance;
+    public UnityEvent[] entrances;
 
-        if (partsCollected == 2)
-        {
-            winText.SetActive(true);
-        }
+    public static void LoadScene(string scene, int entrance)
+    {
+        chosenEntrance = entrance;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(scene);
+    }
+
+    static void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        instance.entrances[chosenEntrance].Invoke();
+    }
+
+    public void SetPlayerPosition(Vector3 position)
+    {
+        PlayerMove.instance.transform.position = position;
+    }
+    public void SetPlayerPosition(Transform position)
+    {
+        PlayerMove.instance.transform.position = position.position;
     }
 }

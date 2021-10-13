@@ -26,6 +26,11 @@ public class Interactable : MonoBehaviour
         currentBoxOffset.y -= startOffset;
     }
 
+    public void DisableInteractions()
+    {
+        disabled = true;
+    }
+
     void Update()
     {
         if (!disabled)

@@ -26,6 +26,11 @@ public class FollowCamera : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        target = PlayerMove.instance.transform;
+    }
+
     void Update()
     {
         Vector2 targetPosition = (Vector2)target.position + offset;

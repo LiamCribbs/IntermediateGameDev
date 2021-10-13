@@ -6,12 +6,11 @@ public class Elevator : MonoBehaviour
 {
     public float speed = 1f;
     public Vector2 targetPos;
-    public Vector3 playerPos = new Vector3(0f, 0f, -0.05f);
+    public Vector3 playerPos = new Vector3(0f, 0f, -0.01f);
 
     public void MoveUp()
     {
-        PlayerMove.instance.disable = true;
-        PlayerMove.instance.rigidbody.simulated = false;
+        PlayerMove.instance.DisableRequests++;
         PlayerMove.instance.transform.SetParent(transform);
         PlayerMove.instance.transform.localPosition = playerPos;
         StartCoroutine(MoveUpCoroutine(targetPos));
@@ -37,7 +36,6 @@ public class Elevator : MonoBehaviour
         }
 
         PlayerMove.instance.transform.SetParent(null);
-        PlayerMove.instance.disable = false;
-        PlayerMove.instance.rigidbody.simulated = true;
+        PlayerMove.instance.DisableRequests--;
     }
 }

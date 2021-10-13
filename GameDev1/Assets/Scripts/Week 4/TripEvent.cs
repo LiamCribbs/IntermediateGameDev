@@ -12,7 +12,7 @@ public class TripEvent : DialogueEmitter
 
     void Start()
     {
-        passport.SetParent(PlayerMove.instance.transform.GetChild(0));
+        passport.SetParent(PlayerMove.instance.sprite);
         passport.localPosition = new Vector3(0f, 0f, -0.05f);
     }
 
@@ -40,7 +40,7 @@ public class TripEvent : DialogueEmitter
 
     void PlayTripAnimation()
     {
-        PlayerMove.instance.disable = true;
+        PlayerMove.instance.DisableRequests++;
         StartCoroutine(RotatePlayer());
     }
 
@@ -56,7 +56,7 @@ public class TripEvent : DialogueEmitter
                 time = 1f;
             }
 
-            PlayerMove.instance.transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, -90f * fallRotateCurve.Evaluate(time));
+            PlayerMove.instance.sprite.localRotation = Quaternion.Euler(0f, 0f, -90f * fallRotateCurve.Evaluate(time));
             yield return null;
         }
     }
@@ -73,11 +73,11 @@ public class TripEvent : DialogueEmitter
                 time = 1f;
             }
 
-            PlayerMove.instance.transform.GetChild(0).localRotation = Quaternion.Euler(0f, 0f, -90f * (1f - Pigeon.EaseFunctions.EaseInOutQuintic(time)));
+            PlayerMove.instance.sprite.localRotation = Quaternion.Euler(0f, 0f, -90f * (1f - Pigeon.EaseFunctions.EaseInOutQuintic(time)));
             yield return null;
         }
 
-        PlayerMove.instance.disable = false;
+        PlayerMove.instance.DisableRequests--;
     }
 
     public void ReturnToNormalState()

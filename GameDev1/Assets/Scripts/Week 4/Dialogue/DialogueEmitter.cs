@@ -125,7 +125,7 @@ public class DialogueEmitter : MonoBehaviour
             return;
         }
 
-        float distance = ((Vector2)DialogueManager.instance.player.transform.position - (Vector2)transform.position).MagFast();
+        float distance = ((Vector2)PlayerMove.instance.transform.position - (Vector2)transform.position).MagFast();
 
         // Set alpha according to distance from player
         if (distance < visibleDistance)

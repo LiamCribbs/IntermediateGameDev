@@ -185,6 +185,16 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    public void Response1Pressed()
+    {
+        emitter.currentDialogue.onResponse1Chosen.Invoke(emitter);
+    }
+
+    public void Response2Pressed()
+    {
+        emitter.currentDialogue.onResponse2Chosen.Invoke(emitter);
+    }
+
     /// <summary>
     /// Write text over time
     /// </summary>
@@ -272,6 +282,12 @@ public class DialogueBox : MonoBehaviour
         if (!emitter.currentDialogue.alwaysCheckForCompletion)
         {
             checkCompleteConditionCoroutine = StartCoroutine(CheckCompleteCondition());
+        }
+
+        if (!string.IsNullOrEmpty(emitter.currentDialogue.response1))
+        {
+            answer1Transform.gameObject.SetActive(true);
+            answer2Transform.gameObject.SetActive(true);
         }
 
         writeTextCoroutine = null;

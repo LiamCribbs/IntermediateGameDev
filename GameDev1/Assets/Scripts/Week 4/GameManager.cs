@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public UnityEngine.UI.Graphic fadeGraphic;
-    IEnumerator fadeCoroutine;
+    Coroutine fadeCoroutine;
     const float FadeSpeed = 2.25f;
     public static bool loadingScene;
 
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             instance.StopCoroutine(instance.fadeCoroutine);
         }
 
-        instance.StartCoroutine(FadeSceneOut(scene));
+        instance.fadeCoroutine = instance.StartCoroutine(FadeSceneOut(scene));
     }
 
     static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         LoadObjectData();
 
-        instance.StartCoroutine(FadeSceneIn());
+        instance.fadeCoroutine = instance.StartCoroutine(FadeSceneIn());
     }
 
     static IEnumerator FadeSceneOut(string scene)

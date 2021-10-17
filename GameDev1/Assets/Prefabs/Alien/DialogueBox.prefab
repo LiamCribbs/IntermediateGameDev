@@ -465,6 +465,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  answer1Transform: {fileID: 568839858264665347}
+  answer1Group: {fileID: 9123820195604528891}
+  answer1Text: {fileID: 3396306359921836422}
+  answer2Transform: {fileID: 4985752231791016010}
+  answer2Group: {fileID: 2473331947048936544}
+  answer2Text: {fileID: 4511790549097841553}
 --- !u!114 &5452103795981120191
 MonoBehaviour:
   m_ObjectHideFlags: 0

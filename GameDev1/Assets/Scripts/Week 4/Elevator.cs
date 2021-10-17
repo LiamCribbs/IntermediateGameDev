@@ -101,6 +101,11 @@ public class Elevator : MonoBehaviour, ISaveable
         PlayerMove.instance.DisableRequests--;
         onArrived.Invoke();
 
+        if (TryGetComponent(out Interactable interactable))
+        {
+            interactable.Enable();
+        }
+
         moveCoroutine = null;
     }
 

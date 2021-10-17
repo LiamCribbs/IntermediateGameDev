@@ -31,6 +31,12 @@ public class FollowCamera : MonoBehaviour
         target = PlayerMove.instance.transform;
     }
 
+    public void SetPosition(Vector2 position)
+    {
+        focusPosition = position;
+        effectedPos = CameraEffectors.instance.HandleEffectors(camera, position);
+    }
+
     void Update()
     {
         Vector2 targetPosition = (Vector2)target.position + offset;

@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     Coroutine fadeCoroutine;
 
     public Vector2 boxOffset;
-    public float startOffset = 1f;
+    public float startOffset = 0.25f;
     Vector2 currentBoxOffset;
 
     public KeyCode interactKey = KeyCode.E;
@@ -24,6 +24,11 @@ public class Interactable : MonoBehaviour
     {
         currentBoxOffset = boxOffset;
         currentBoxOffset.y -= startOffset;
+    }
+
+    public void EnableInteractions()
+    {
+        disabled = false;
     }
 
     public void DisableInteractions()
@@ -95,7 +100,10 @@ public class Interactable : MonoBehaviour
             StopCoroutine(fadeCoroutine);
         }
 
-        fadeCoroutine = StartCoroutine(FadeBoxOut());
+        if (box)
+        {
+            fadeCoroutine = StartCoroutine(FadeBoxOut());
+        }
     }
 
     IEnumerator FadeBoxIn()

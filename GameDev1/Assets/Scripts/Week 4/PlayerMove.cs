@@ -91,12 +91,12 @@ public class PlayerMove : MonoBehaviour
             jumpInput = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (sideInput == 1f)
         {
             float scale = sprite.localScale.y;
             sprite.localScale = new Vector3(scale, scale, scale);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (sideInput == -1f)
         {
             float scale = sprite.localScale.y;
             sprite.localScale = new Vector3(-scale, scale, scale);

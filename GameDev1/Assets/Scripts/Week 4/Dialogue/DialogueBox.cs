@@ -45,6 +45,14 @@ public class DialogueBox : MonoBehaviour
     const string AlienScriptStartTag = "<i><color=#ffc949>";
     const string AlienScriptEndTag = "</i></color>";
 
+    public RectTransform answer1Transform;
+    public CanvasGroup answer1Group;
+    public TextMeshProUGUI answer1Text;
+
+    public RectTransform answer2Transform;
+    public CanvasGroup answer2Group;
+    public TextMeshProUGUI answer2Text;
+
     public bool Active
     {
         get => gameObject.activeInHierarchy;

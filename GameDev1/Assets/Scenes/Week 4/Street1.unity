@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69035064}
   - component: {fileID: 69035065}
+  - component: {fileID: 69035066}
   m_Layer: 0
   m_Name: Smidge shop owner
   m_TagString: Untagged
@@ -206,6 +207,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &69035066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69035063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c13c7c4e8206a44a6888c3af7d5153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxOffset: {x: 0, y: 1.8, z: 0}
+  cameraBoundsCheckPadding: {x: 0.5, y: 0}
+  visibleDistance: 10
+  visibleFalloffDistance: 2
+  startDialoguePredicate:
+    predicates:
+    - predicate:
+        _PersistentCalls:
+        - _Target: {fileID: 69035066}
+          _MethodName: IsWithinCameraBounds
+          _PersistentArguments: []
+      Operator: 0
+  dialogue:
+  - text: <i>Come buy some very reasonably priced ugormorgs!</i>
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69035066}
+            _MethodName: False
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69035066}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ReturnBox
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
 --- !u!1 &69803548
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +423,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -389,6 +473,76 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: I'm sorry
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 69803552}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    response2: Fuck you
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 69803552}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+  - text: Oh you will be, bucko. I'm watching you
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -412,14 +566,14 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
+              m_IntArgument: 2
               m_FloatArgument: 0
-              m_StringArgument: hey kid
+              m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
       predicates:
         predicates: []
-  - text: You must think I'm an idiot
+  - text: Don't ever think you're safe from me.
     effect: 0
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -431,48 +585,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
-    onStart:
+    response1: 
+    onResponse1Chosen:
       m_PersistentCalls:
         m_Calls: []
-    onFinishedWriting:
+    response2: 
+    onResponse2Chosen:
       m_PersistentCalls:
         m_Calls: []
-    onCompleteEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-    onClearedEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 69803552}
-            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-            m_MethodName: ShowNextDialogue
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: hey kid
-              m_BoolArgument: 0
-            m_CallState: 2
-      predicates:
-        predicates: []
-  - text: I'm gonna have to report you
-    effect: 0
-    effectDuration: 0
-    alwaysCheckForCompletion: 0
-    completeCondition:
-      predicates:
-      - predicate:
-          _PersistentCalls:
-          - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
-        Operator: 0
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -499,6 +619,156 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: You <i>little fucking piece of shit</i>!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69803552}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: You will regret the day you used an elevator!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69803552}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Watch your back, <i>fuckturd</i>.\w I'll be coming for you.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69803552}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ReturnBox
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
       predicates:
@@ -2175,7 +2445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c13c7c4e8206a44a6888c3af7d5153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBoxOffset: {x: 0, y: -1.8, z: 0}
+  dialogueBoxOffset: {x: 0, y: -0.75, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 10
   visibleFalloffDistance: 2
@@ -2202,6 +2472,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2252,6 +2530,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2302,6 +2588,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2352,6 +2646,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2402,6 +2704,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2452,6 +2762,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []

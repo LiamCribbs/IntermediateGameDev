@@ -26,6 +26,7 @@ using UnityEditor.VersionControl;
 // as modified despite having just reverted. This only happens on the fist time, and reverting again fix it. 
 // Under the hood the state is still always valid and serialized correctly regardless.
 
+#if UNITY_EDITOR
 public static class SceneHelper
 {
     static string sceneToOpen;
@@ -48,7 +49,7 @@ public static class SceneHelper
             EditorApplication.update += OnUpdate;
         }
 #else
-			SceneManager.LoadScene(sceneName);
+			UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
 #endif
     }
 
@@ -82,6 +83,7 @@ public static class SceneHelper
         sceneToOpen = null;
     }
 }
+#endif
 
 /// <summary>
 /// A wrapper that provides the means to safely serialize Scene Asset References.

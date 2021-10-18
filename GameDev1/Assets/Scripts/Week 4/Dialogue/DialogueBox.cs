@@ -48,10 +48,12 @@ public class DialogueBox : MonoBehaviour
     public RectTransform answer1Transform;
     public CanvasGroup answer1Group;
     public TextMeshProUGUI answer1Text;
+    public Pigeon.RectSizeButton answer1Button;
 
     public RectTransform answer2Transform;
     public CanvasGroup answer2Group;
     public TextMeshProUGUI answer2Text;
+    public Pigeon.RectSizeButton answer2Button;
 
     public bool Active
     {
@@ -90,6 +92,9 @@ public class DialogueBox : MonoBehaviour
     public void Initialze(DialogueEmitter emitter, DialogueData data)
     {
         this.emitter = emitter;
+
+        answer1Transform.gameObject.SetActive(false);
+        answer2Transform.gameObject.SetActive(false);
 
         textMesh.transform.localPosition = Vector3.zero;
         canComplete = false;
@@ -133,7 +138,7 @@ public class DialogueBox : MonoBehaviour
         RestartCoroutine(ref writeTextCoroutine, ClearText(writeDelay));
     }
 
-    void UpdateBounds()
+    Vector2 UpdateBounds(TextMeshProUGUI textMesh)
     {
         textMesh.ForceMeshUpdate();
 
@@ -146,7 +151,7 @@ public class DialogueBox : MonoBehaviour
         bounds.x += padding;
         bounds.y += padding;
 
-        this.bounds = bounds;
+        return bounds;
     }
 
     void Update()
@@ -188,11 +193,27 @@ public class DialogueBox : MonoBehaviour
     public void Response1Pressed()
     {
         emitter.currentDialogue.onResponse1Chosen.Invoke(emitter);
+        canComplete = true;
     }
 
     public void Response2Pressed()
     {
         emitter.currentDialogue.onResponse2Chosen.Invoke(emitter);
+        canComplete = true;
+    }
+
+    public void QueueDialogue(DialogueData dialogue)
+    {
+        queuedData = dialogue;
+        emitter.currentDialogue.onClearedEvent.action.AddListener(InitializeQueuedDialogue);
+    }
+
+    DialogueData queuedData;
+
+    void InitializeQueuedDialogue(DialogueEmitter emitter)
+    {
+        emitter.currentDialogue.onClearedEvent.action.RemoveListener(InitializeQueuedDialogue);
+        emitter.ShowDialogue(queuedData);
     }
 
     /// <summary>
@@ -268,7 +289,7 @@ public class DialogueBox : MonoBehaviour
 
             //typedText += text[i];
             textMesh.text = typedText;
-            UpdateBounds();
+            bounds = UpdateBounds(textMesh);
 
             yield return wait;
         }
@@ -286,8 +307,14 @@ public class DialogueBox : MonoBehaviour
 
         if (!string.IsNullOrEmpty(emitter.currentDialogue.response1))
         {
+            answer1Text.text = emitter.currentDialogue.response1;
+            answer2Text.text = emitter.currentDialogue.response2;
             answer1Transform.gameObject.SetActive(true);
             answer2Transform.gameObject.SetActive(true);
+            answer1Button.clickSize = new Vector2(UpdateBounds(answer1Text).x, 95f);
+            answer2Button.clickSize = new Vector2(UpdateBounds(answer2Text).x, 95f);
+            answer1Button.SetClick(true);
+            answer2Button.SetClick(true);
         }
 
         writeTextCoroutine = null;
@@ -299,6 +326,12 @@ public class DialogueBox : MonoBehaviour
     IEnumerator ClearText(float waitTime)
     {
         ResetCoroutine(ref checkCompleteConditionCoroutine);
+
+        if (answer1Button.clicking)
+        {
+            answer1Button.SetClick(false);
+            answer2Button.SetClick(false);
+        }
 
         WaitForSecondsRealtime wait = new WaitForSecondsRealtime(waitTime);
 
@@ -324,7 +357,7 @@ public class DialogueBox : MonoBehaviour
 
             typedText = typedText.Remove(startIndex, charsPerIteration);
             textMesh.text = typedText;
-            UpdateBounds();
+            bounds = UpdateBounds(textMesh);
 
             DialogueManager.instance.PlayWriteSound();
 

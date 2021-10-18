@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerMove.instance.DisableRequests++;
 
+        instance.fadeGraphic.transform.SetAsLastSibling();
+
         Color color = instance.fadeGraphic.color;
         float time = 0f;
 
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
 
     static IEnumerator FadeSceneIn()
     {
+        instance.fadeGraphic.transform.SetAsLastSibling();
+
         Color color = instance.fadeGraphic.color;
         float time = 0f;
 

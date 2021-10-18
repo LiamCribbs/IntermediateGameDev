@@ -19,13 +19,13 @@ public class DialogueData
     [Tooltip("Predicates for the text to clear")]
     public Predicates completeCondition;
 
-    [Space(10)]
+    [Space(20)]
     public string response1;
     public UnityEvent<DialogueEmitter> onResponse1Chosen;
     public string response2;
     public UnityEvent<DialogueEmitter> onResponse2Chosen;
 
-    [Space(10)]
+    [Space(20)]
     [Tooltip("Fired just before the text starts writing")]
     public UnityEvent<DialogueEmitter> onStart;
     [Tooltip("Fired when the text finishes writing")]

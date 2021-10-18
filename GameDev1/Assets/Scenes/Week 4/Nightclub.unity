@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &69803549
 Animator:
   serializedVersion: 3
@@ -357,6 +357,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -399,6 +407,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -441,6 +457,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -483,6 +507,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -679,7 +711,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165016401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.51, z: 0}
+  m_LocalPosition: {x: 0, y: -16.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1688815941}
@@ -3202,7 +3234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536668816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.49, z: 0}
+  m_LocalPosition: {x: 0, y: -6.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1688815941}

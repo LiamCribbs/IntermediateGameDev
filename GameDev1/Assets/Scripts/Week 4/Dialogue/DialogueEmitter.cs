@@ -48,6 +48,16 @@ public class DialogueEmitter : MonoBehaviour
         ShowDialogue(dialogue[System.Array.IndexOf(dialogue, currentDialogue) + 1]);
     }
 
+    public void ShowFutureDialogue(int increase)
+    {
+        ShowDialogue(dialogue[System.Array.IndexOf(dialogue, currentDialogue) + increase]);
+    }
+
+    public void QueueFutureDialogue(int increase)
+    {
+        dialogueBox.QueueDialogue(dialogue[System.Array.IndexOf(dialogue, currentDialogue) + increase]);
+    }
+
     public void ShowRandomDialogue()
     {
         DialogueData data;

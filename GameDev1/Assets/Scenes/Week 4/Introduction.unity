@@ -264,6 +264,14 @@ MonoBehaviour:
             _MethodName: WaitAfterWritingMedium
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -306,6 +314,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -348,6 +364,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -390,48 +414,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
-    onStart:
+    response1: 
+    onResponse1Chosen:
       m_PersistentCalls:
         m_Calls: []
-    onFinishedWriting:
+    response2: 
+    onResponse2Chosen:
       m_PersistentCalls:
         m_Calls: []
-    onCompleteEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-    onClearedEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 69803552}
-            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-            m_MethodName: ShowNextDialogue
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: hey kid
-              m_BoolArgument: 0
-            m_CallState: 2
-      predicates:
-        predicates: []
-  - text: He lives on <i>scood</i> street
-    effect: 0
-    effectDuration: 0
-    alwaysCheckForCompletion: 0
-    completeCondition:
-      predicates:
-      - predicate:
-          _PersistentCalls:
-          - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
-        Operator: 0
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -475,6 +465,179 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69803552}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: He lives on <i>scood</i> street, you know where that is?
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: False
+            _PersistentArguments: []
+        Operator: 0
+    response1: No
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 69803552}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    response2: Yeah
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 69803552}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+  - text: Ok, just take the <i>elevator</i> up to <i>Smidge</i> street and take a
+      <i>left</i>.\w Don't worry about the <i>nightclub</i>.\w Then just follow the
+      <i>road</i> till you reach the <i>metro</i> entrance.\w Go down the <i>stairs</i>
+      and take the <i>train</i> across to the <i>other side of the city</i>.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69803552}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowFutureDialogue
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Great
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -517,6 +680,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -559,6 +730,14 @@ MonoBehaviour:
             _MethodName: IsLeftClickPressed
             _PersistentArguments: []
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2118,6 +2297,14 @@ MonoBehaviour:
               _W: 0
               _Object: {fileID: 0}
         Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
     onStart:
       m_PersistentCalls:
         m_Calls: []
@@ -3399,6 +3586,14 @@ PrefabInstance:
     - target: {fileID: 8455705448202587039, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455705448202587039, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455705448202587039, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.44
       objectReference: {fileID: 0}
     - target: {fileID: 8455705448202587039, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

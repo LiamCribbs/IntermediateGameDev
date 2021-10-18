@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c13c7c4e8206a44a6888c3af7d5153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBoxOffset: {x: 0, y: 0.5, z: 0}
+  dialogueBoxOffset: {x: -2.33, y: 2.7, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 10
   visibleFalloffDistance: 2

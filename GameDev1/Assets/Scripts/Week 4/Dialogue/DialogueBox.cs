@@ -323,6 +323,8 @@ public class DialogueBox : MonoBehaviour
             }
         }
 
+        yield return null;
+
         lastFinishedWritingTime = Time.unscaledTime;
 
         // On finished event
@@ -395,6 +397,8 @@ public class DialogueBox : MonoBehaviour
                 yield return wait;
             }
         }
+
+        yield return null;
 
         emitter.currentDialogue.onClearedEvent.Invoke(emitter);
 

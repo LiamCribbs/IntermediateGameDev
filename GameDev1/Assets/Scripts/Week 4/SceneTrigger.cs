@@ -6,10 +6,17 @@ public class SceneTrigger : MonoBehaviour
 {
     public SceneReference scene;
     public int entrance;
+    bool enable = false;
+
+    IEnumerator Start()
+    {
+        yield return null;
+        enable = true;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other == PlayerMove.instance.collider)
+        if (enable && other == PlayerMove.instance.collider)
         {
             GameManager.LoadScene(scene, entrance);
         }

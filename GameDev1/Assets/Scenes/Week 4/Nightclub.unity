@@ -314,8 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 0.5, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -570,8 +570,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 1.75, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -1317,8 +1317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 1.8, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -2200,8 +2200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 1.8, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -3425,8 +3425,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: -1, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -3604,8 +3604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: -0.15, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -3783,8 +3783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 0.3, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -3962,8 +3962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 0, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -4409,8 +4409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 1.8, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -4645,8 +4645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: -1, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -5121,8 +5121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 0.3, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -5551,8 +5551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 0.9, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -5793,8 +5793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: -0.5, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -5972,8 +5972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: -0.2, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -6151,8 +6151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxOffset: {x: 0, y: 0.7, z: 0}
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
-  visibleDistance: 10
-  visibleFalloffDistance: 2
+  visibleDistance: 1
+  visibleFalloffDistance: 8
   startDialoguePredicate:
     predicates:
     - predicate:

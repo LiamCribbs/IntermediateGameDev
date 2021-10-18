@@ -165,6 +165,23 @@ public class DialogueBox : MonoBehaviour
             canComplete = false;
             ClearText();
         }
+
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
+        //{
+        //    if (clearing)
+        //    {
+        //        textMesh.text = null;
+        //        bounds = UpdateBounds(textMesh);
+        //        DialogueManager.instance.PlayWriteSound();
+        //        emitter.currentDialogue.onClearedEvent.Invoke(emitter);
+        //        clearing = false;
+        //        writeTextCoroutine = null;
+        //    }
+        //    else if (writing)
+        //    {
+
+        //    }
+        //}
     }
 
     IEnumerator CheckCompleteCondition()
@@ -192,14 +209,20 @@ public class DialogueBox : MonoBehaviour
 
     public void Response1Pressed()
     {
-        emitter.currentDialogue.onResponse1Chosen.Invoke(emitter);
-        canComplete = true;
+        if (!canComplete)
+        {
+            emitter.currentDialogue.onResponse1Chosen.Invoke(emitter);
+            canComplete = true;
+        }
     }
 
     public void Response2Pressed()
     {
-        emitter.currentDialogue.onResponse2Chosen.Invoke(emitter);
-        canComplete = true;
+        if (!canComplete)
+        {
+            emitter.currentDialogue.onResponse2Chosen.Invoke(emitter);
+            canComplete = true;
+        }
     }
 
     public void QueueDialogue(DialogueData dialogue)
@@ -251,7 +274,10 @@ public class DialogueBox : MonoBehaviour
             char letter = text[i];
             if (letter == '\\' && text[i + 1] == 'w')
             {
-                yield return pauseCharacterWaitTime;
+                if (!Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    yield return pauseCharacterWaitTime;
+                }
 
                 i++;
                 continue;
@@ -291,7 +317,10 @@ public class DialogueBox : MonoBehaviour
             textMesh.text = typedText;
             bounds = UpdateBounds(textMesh);
 
-            yield return wait;
+            if (!Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                yield return wait;
+            }
         }
 
         lastFinishedWritingTime = Time.unscaledTime;
@@ -361,7 +390,10 @@ public class DialogueBox : MonoBehaviour
 
             DialogueManager.instance.PlayWriteSound();
 
-            yield return wait;
+            if (!Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                yield return wait;
+            }
         }
 
         emitter.currentDialogue.onClearedEvent.Invoke(emitter);

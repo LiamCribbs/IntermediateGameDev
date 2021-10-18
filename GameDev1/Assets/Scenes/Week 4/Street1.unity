@@ -470,7 +470,7 @@ MonoBehaviour:
       - predicate:
           _PersistentCalls:
           - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
+            _MethodName: False
             _PersistentArguments: []
         Operator: 0
     response1: I'm sorry

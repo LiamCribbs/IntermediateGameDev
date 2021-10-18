@@ -99,6 +99,18 @@ public class DialogueEmitter : MonoBehaviour
         return dialogueBox.lastFinishedWritingTime > 0f && Time.unscaledTime - dialogueBox.lastFinishedWritingTime > WaitTimeAfterWritingMedium;
     }
 
+    public void ReloadThisDialogueAfterTime()
+    {
+        StartCoroutine(ReloadDialogueAfterRandTime(1f, 10f));
+    }
+
+    public IEnumerator ReloadDialogueAfterRandTime(float min, float max)
+    {
+        ReturnBox();
+        yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(min, max));
+        ShowDialogue(currentDialogue);
+    }
+
     public bool IsPlayerWithinRange()
     {
         return ((Vector2)DialogueManager.instance.player.transform.position - (Vector2)transform.position).MagFast() < visibleDistance + visibleFalloffDistance;

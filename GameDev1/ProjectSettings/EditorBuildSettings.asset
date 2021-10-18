@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/Nightclub.unity
     guid: 6526363b59e0d04428587a988cdc82db
+  - enabled: 1
+    path: Assets/Scenes/Week 4/NightclubRoof.unity
+    guid: e4a34c00a15a17d4b8068ad1bca094ea
   m_configObjects: {}

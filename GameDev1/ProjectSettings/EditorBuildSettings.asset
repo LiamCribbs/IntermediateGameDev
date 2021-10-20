@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Week 4/GarbageStreet.unity
     guid: ec400fb70a61b724fb300a502ac6b5fa
   - enabled: 1
-    path: Assets/Scenes/Week 4/GarbageChute.unity
+    path: Assets/Scenes/Week 4/GarbageChuteEntry.unity
     guid: 8ac3a8d71aea17c4faf9f0dd9b90ea97
+  - enabled: 1
+    path: Assets/Scenes/Week 4/GarbageChute.unity
+    guid: 74eb1b93696184f49bfd2f9c5c660722
   m_configObjects: {}

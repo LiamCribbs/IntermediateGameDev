@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     float sideInput;
     public bool jumpInput;
 
-    int _disableRequests;
+    [SerializeField] int _disableRequests;
     public int DisableRequests
     {
         get => _disableRequests;

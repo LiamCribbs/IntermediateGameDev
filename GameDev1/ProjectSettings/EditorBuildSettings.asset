@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/NightclubRoof.unity
     guid: e4a34c00a15a17d4b8068ad1bca094ea
+  - enabled: 1
+    path: Assets/Scenes/Week 4/GarbageStreet.unity
+    guid: ec400fb70a61b724fb300a502ac6b5fa
+  - enabled: 1
+    path: Assets/Scenes/Week 4/GarbageChute.unity
+    guid: 8ac3a8d71aea17c4faf9f0dd9b90ea97
   m_configObjects: {}

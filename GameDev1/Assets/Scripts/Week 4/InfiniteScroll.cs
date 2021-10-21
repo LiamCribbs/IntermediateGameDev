@@ -11,13 +11,16 @@ public class InfiniteScroll : MonoBehaviour
     public Vector2 minPos;
     public Vector3 objectSize;
 
-    // Start is called before the first frame update
+    public Sprite defaultSprite;
+    public Sprite windowSprite;
+
+    System.Action<Transform> onObjectMoved;
+
     void Awake()
     {
         leadingObject = object1;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 move = moveSpeed * Time.deltaTime;
@@ -28,7 +31,66 @@ public class InfiniteScroll : MonoBehaviour
         {
             //leadingObject.localPosition = new Vector3(minPos.x, minPos.y, leadingObject.localPosition.z);
             leadingObject.localPosition += objectSize * 2f;
+            onObjectMoved?.Invoke(leadingObject);
             leadingObject = leadingObject == object1 ? object2 : object1;
         }
+    }
+
+    public void ActivateWindow(int numWindows)
+    {
+        StartCoroutine(ActivateWindowsCoroutine(numWindows));
+    }
+
+    IEnumerator ActivateWindowsCoroutine(int numWindows)
+    {
+        bool leaderMoved = false;
+        Transform transform = null;
+        int i = 0;
+
+        onObjectMoved += (Transform t) =>
+        {
+            leaderMoved = true;
+            transform = t;
+            i++;
+        };
+
+        while (!leaderMoved)
+        {
+            yield return null;
+        }
+
+        transform.GetComponent<SpriteRenderer>().sprite = windowSprite;
+        leaderMoved = false;
+
+        while (!leaderMoved)
+        {
+            yield return null;
+        }
+
+        transform.GetComponent<SpriteRenderer>().sprite = windowSprite;
+        i = 0;
+
+        while (i < numWindows)
+        {
+            yield return null;
+        }
+
+        leaderMoved = false;
+
+        while (!leaderMoved)
+        {
+            yield return null;
+        }
+
+        transform.GetComponent<SpriteRenderer>().sprite = defaultSprite;
+        leaderMoved = false;
+
+        while (!leaderMoved)
+        {
+            yield return null;
+        }
+
+        transform.GetComponent<SpriteRenderer>().sprite = defaultSprite;
+        onObjectMoved = null;
     }
 }

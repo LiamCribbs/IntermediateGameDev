@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/GarbageChute.unity
     guid: 74eb1b93696184f49bfd2f9c5c660722
+  - enabled: 1
+    path: Assets/Scenes/Week 4/GarbageChuteExit.unity
+    guid: 9b3404e9ee4812246b4a3e1db458ebea
   m_configObjects: {}

@@ -40,6 +40,8 @@ public class PlayerMove : MonoBehaviour
     float sideInput;
     public bool jumpInput;
 
+    public bool jumpEnabled = true;
+
     [SerializeField] int _disableRequests;
     public int DisableRequests
     {
@@ -86,7 +88,7 @@ public class PlayerMove : MonoBehaviour
     void GetInput()
     {
         sideInput = Input.GetKey(KeyCode.D) ? 1f : Input.GetKey(KeyCode.A) ? -1f : 0f;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (jumpEnabled && Input.GetKeyDown(KeyCode.Space))
         {
             jumpInput = true;
         }

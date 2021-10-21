@@ -55,6 +55,8 @@ public class DialogueBox : MonoBehaviour
     public TextMeshProUGUI answer2Text;
     public Pigeon.RectSizeButton answer2Button;
 
+    public GameObject clickIcon;
+
     public bool Active
     {
         get => gameObject.activeInHierarchy;

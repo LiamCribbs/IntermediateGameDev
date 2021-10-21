@@ -59,9 +59,11 @@ MonoBehaviour:
   airDeceleration: 10
   velocity: {x: 0, y: 0}
   groundCheckPosition: -0.494
-  groundCheckSize: {x: 1, y: 0.05}
+  groundCheckSize: {x: 0.5, y: 0.05}
   grounded: 0
   jumpInput: 0
+  jumpEnabled: 1
+  _disableRequests: 0
 --- !u!50 &8455705448202587032
 Rigidbody2D:
   serializedVersion: 4

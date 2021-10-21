@@ -25,6 +25,8 @@ public class DialogueEmitter : MonoBehaviour
     const float WaitTimeAfterWritingShort = 0.5f;
     const float WaitTimeAfterWritingMedium = 1.5f;
 
+    bool leftClickCheck;
+
     public void ShowDialogue(int id)
     {
         ShowDialogue(dialogue[id]);
@@ -81,6 +83,7 @@ public class DialogueEmitter : MonoBehaviour
 
     public bool IsLeftClickPressed()
     {
+        leftClickCheck = true;
         return Input.GetKeyDown(KeyCode.Mouse0);
     }
 
@@ -138,6 +141,19 @@ public class DialogueEmitter : MonoBehaviour
         }
 
         SetBoxAlpha();
+
+        if (dialogueBox)
+        {
+            if (leftClickCheck)
+            {
+                leftClickCheck = false;
+                dialogueBox.clickIcon.SetActive(true);
+            }
+            else if (dialogueBox.clickIcon.activeSelf)
+            {
+                dialogueBox.clickIcon.SetActive(false);
+            }
+        }
     }
 
     void SetBoxAlpha()

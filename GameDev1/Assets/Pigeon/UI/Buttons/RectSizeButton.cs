@@ -33,6 +33,11 @@ namespace Pigeon
             defaultSize = value;
         }
 
+        public virtual Vector2 GetDefaultSize()
+        {
+            return defaultSize;
+        }
+
         public override void OnPointerEnter(PointerEventData eventData)
         {
             if (ignoreEvents && eventData != null)

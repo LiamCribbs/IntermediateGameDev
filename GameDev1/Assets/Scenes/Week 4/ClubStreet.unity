@@ -151,6 +151,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1077486508}
+  - {fileID: 1729324707}
+  - {fileID: 1306658806}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2308,6 +2310,751 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1306658805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1306658806}
+  - component: {fileID: 1306658808}
+  - component: {fileID: 1306658807}
+  m_Layer: 0
+  m_Name: Smidge shop owner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1306658806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306658805}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 26.89, y: -4.07, z: 8.9}
+  m_LocalScale: {x: -1.0072774, y: 1.0072774, z: 1.0072774}
+  m_Children: []
+  m_Father: {fileID: 118109586}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1306658807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306658805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c13c7c4e8206a44a6888c3af7d5153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxOffset: {x: 0, y: 1.8, z: 0}
+  cameraBoundsCheckPadding: {x: 0.5, y: 0}
+  visibleDistance: 10
+  visibleFalloffDistance: 2
+  startDialoguePredicate:
+    predicates:
+    - predicate:
+        _PersistentCalls:
+        - _Target: {fileID: 1306658807}
+          _MethodName: IsWithinCameraBounds
+          _PersistentArguments: []
+      Operator: 0
+  dialogue:
+  - text: Fuck you\w, give me that croissant!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: False
+            _PersistentArguments: []
+        Operator: 0
+    response1: What croissant?
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306658807}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    response2: Fuck you too!
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306658807}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 10
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+  - text: Oh\w I'm sooooorry!\w I thought your pants were pastries.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: I like pastries.\w I think they're tasty.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: And I like tasty food.\w I think it's yummy.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Hey\w, so\w um\w...\w Can I have your pants?
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: False
+            _PersistentArguments: []
+        Operator: 0
+    response1: Uh what
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306658807}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    response2: Sure
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306658807}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+  - text: Yeah...\w I just...\w They really look like croissants.\w I like croissants.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: False
+            _PersistentArguments: []
+        Operator: 0
+    response1: I need my pants!
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306658807}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    response2: Ok
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306658807}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+  - text: Ok fiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiine
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: But now I'm sad.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ReturnBox
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Yesssssssssssssss!\w Thank you!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: I can't eat them in public though.\w That'd be weird.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ReturnBox
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: No!!\w I apologize profusely!\w I'm sobbing with sorrow!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: It was an accident!\w I thought your pants were pastries.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1306658807}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1306658807}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowDialogue
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+--- !u!212 &1306658808
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306658805}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: fbef09017f884ba4987870b248c92586, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 7a65f6896b36f2d469f85ce61534c2f9, type: 3}
+  m_Color: {r: 0.9245283, g: 0.6793997, b: 0.38812745, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.88, y: 2.88}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1360003493
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,6 +4224,678 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 10}
   m_EdgeRadius: 0
+--- !u!1 &1729324706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729324707}
+  - component: {fileID: 1729324709}
+  - component: {fileID: 1729324708}
+  m_Layer: 0
+  m_Name: Smidge shop owner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1729324707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729324706}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.25, y: -3.76, z: 8.9}
+  m_LocalScale: {x: 1.4978, y: 1.4978, z: 1.4978}
+  m_Children: []
+  m_Father: {fileID: 118109586}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729324708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729324706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c13c7c4e8206a44a6888c3af7d5153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxOffset: {x: 0, y: 1.8, z: 0}
+  cameraBoundsCheckPadding: {x: 0.5, y: 0}
+  visibleDistance: 10
+  visibleFalloffDistance: 2
+  startDialoguePredicate:
+    predicates:
+    - predicate:
+        _PersistentCalls:
+        - _Target: {fileID: 1729324708}
+          _MethodName: IsWithinCameraBounds
+          _PersistentArguments: []
+      Operator: 0
+  dialogue:
+  - text: I used to be like you.\w Then I realized food is bad!\w Evil!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: I was once attacked by a rabid pistachio, did you know that?
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: False
+            _PersistentArguments: []
+        Operator: 0
+    response1: No
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1729324708}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    response2: Stare Silently
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1729324708}
+          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+          m_MethodName: QueueFutureDialogue
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+  - text: Why did you say that?\w What do you want me to stare at?
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Anyway, after the pistachio attack, it all went down mountain.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowFutureDialogue
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Well it all went down mountain from there.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: I was diagnosed with Rabid Pistachio Disease.
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: It was terrible, I tell you.\w Terrible!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Had pistachios coming out of...\w places...\w for weeks!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: I won't even tell you where!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: But you know.
+    effect: 3
+    effectDuration: 5
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Anywho, you just keep an eye out for pistachios.\w Wouldn't want another
+      <i>shloong</i> to go through that experience!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 1729324708}
+            _MethodName: IsLeftClickPressed
+            _PersistentArguments: []
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1729324708}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ReturnBox
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+--- !u!212 &1729324709
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729324706}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: fbef09017f884ba4987870b248c92586, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 152d521ab57057843ae26371194725ca, type: 3}
+  m_Color: {r: 0.7735849, g: 0.3977394, b: 0.6256543, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.88, y: 2.88}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1743623164
 GameObject:
   m_ObjectHideFlags: 0

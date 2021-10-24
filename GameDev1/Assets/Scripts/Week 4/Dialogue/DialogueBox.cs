@@ -40,7 +40,7 @@ public class DialogueBox : MonoBehaviour
     const float FloatHardInterval = 0.2f;
 
     [System.NonSerialized] public float lastFinishedWritingTime;
-    static readonly WaitForSecondsRealtime pauseCharacterWaitTime = new WaitForSecondsRealtime(0.5f);
+    const float pauseCharacterWaitTime = 0.5f;
 
     const string AlienScriptStartTag = "<i><color=#ffc949>";
     const string AlienScriptEndTag = "</i></color>";
@@ -49,11 +49,13 @@ public class DialogueBox : MonoBehaviour
     public CanvasGroup answer1Group;
     public TextMeshProUGUI answer1Text;
     public Pigeon.RectSizeButton answer1Button;
+    public Pigeon.Button answer1ClickButton;
 
     public RectTransform answer2Transform;
     public CanvasGroup answer2Group;
     public TextMeshProUGUI answer2Text;
     public Pigeon.RectSizeButton answer2Button;
+    public Pigeon.Button answer2ClickButton;
 
     public GameObject clickIcon;
 
@@ -252,8 +254,6 @@ public class DialogueBox : MonoBehaviour
             checkCompleteConditionCoroutine = StartCoroutine(CheckCompleteCondition());
         }
 
-        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(waitTime);
-
         string typedText = "";
 
         // Write text one char at a time
@@ -264,21 +264,21 @@ public class DialogueBox : MonoBehaviour
                 yield return null;
             }
 
-            if (i == 0)
-            {
-                DialogueManager.instance.PlayWriteSoundHeavy();
-            }
-            else
-            {
-                DialogueManager.instance.PlayWriteSound();
-            }
-
             char letter = text[i];
             if (letter == '\\' && text[i + 1] == 'w')
             {
                 if (!Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    yield return pauseCharacterWaitTime;
+                    if (i == 0)
+                    {
+                        DialogueManager.instance.PlayWriteSoundHeavy();
+                    }
+                    else
+                    {
+                        DialogueManager.instance.PlayWriteSound();
+                    }
+
+                    yield return new WaitForSecondsRealtimeConditional(pauseCharacterWaitTime);
                 }
 
                 i++;
@@ -321,7 +321,16 @@ public class DialogueBox : MonoBehaviour
 
             if (!Input.GetKeyDown(KeyCode.Mouse0))
             {
-                yield return wait;
+                if (i == 0)
+                {
+                    DialogueManager.instance.PlayWriteSoundHeavy();
+                }
+                else
+                {
+                    DialogueManager.instance.PlayWriteSound();
+                }
+
+                yield return new WaitForSecondsRealtimeConditional(waitTime);
             }
         }
 
@@ -346,8 +355,14 @@ public class DialogueBox : MonoBehaviour
             answer2Transform.gameObject.SetActive(true);
             answer1Button.clickSize = new Vector2(UpdateBounds(answer1Text).x, 95f);
             answer2Button.clickSize = new Vector2(UpdateBounds(answer2Text).x, 95f);
+            answer1Button.rectTransform.sizeDelta = answer1Button.GetDefaultSize();
             answer1Button.SetClick(true);
+            answer2Button.rectTransform.sizeDelta = answer2Button.GetDefaultSize();
             answer2Button.SetClick(true);
+            answer1ClickButton.hovering = false;
+            answer1ClickButton.SetClick(false);
+            answer2ClickButton.hovering = false;
+            answer2ClickButton.SetClick(false);
         }
 
         writeTextCoroutine = null;
@@ -365,8 +380,6 @@ public class DialogueBox : MonoBehaviour
             answer1Button.SetClick(false);
             answer2Button.SetClick(false);
         }
-
-        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(waitTime);
 
         text = textMesh.text;
         string typedText = text;
@@ -392,11 +405,10 @@ public class DialogueBox : MonoBehaviour
             textMesh.text = typedText;
             bounds = UpdateBounds(textMesh);
 
-            DialogueManager.instance.PlayWriteSound();
-
             if (!Input.GetKeyDown(KeyCode.Mouse0))
             {
-                yield return wait;
+                DialogueManager.instance.PlayWriteSound();
+                yield return new WaitForSecondsRealtimeConditional(waitTime);
             }
         }
 

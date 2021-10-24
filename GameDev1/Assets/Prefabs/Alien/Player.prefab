@@ -59,7 +59,7 @@ MonoBehaviour:
   airDeceleration: 10
   velocity: {x: 0, y: 0}
   groundCheckPosition: -0.494
-  groundCheckSize: {x: 0.5, y: 0.05}
+  groundCheckSize: {x: 0.64, y: 0.05}
   grounded: 0
   jumpInput: 0
   jumpEnabled: 1

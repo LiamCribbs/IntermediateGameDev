@@ -2434,7 +2434,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 21ab168084094904195e3e537778477c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d35b483ced467864692e89f5b0fe57e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4071,8 +4071,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene:
-    sceneAsset: {fileID: 102900000, guid: ec400fb70a61b724fb300a502ac6b5fa, type: 3}
-    scenePath: Assets/Scenes/Week 4/GarbageStreet.unity
+    sceneAsset: {fileID: 102900000, guid: 04cb76d2ba65abe4cabc3f2c58191522, type: 3}
+    scenePath: Assets/Scenes/Week 4/SpaceStation.unity
   entrance: 0
 --- !u!1 &1897667291
 GameObject:
@@ -4442,6 +4442,10 @@ PrefabInstance:
     - target: {fileID: 8455705448202587033, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
       propertyPath: _disableRequests
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455705448202587033, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
+      propertyPath: groundCheckSize.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8455705448202587033, guid: 047f87552f186fa4bbc66c16525a970c, type: 3}
       propertyPath: groundAcceleration

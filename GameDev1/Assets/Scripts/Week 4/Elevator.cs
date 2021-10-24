@@ -99,6 +99,7 @@ public class Elevator : MonoBehaviour, ISaveable
         pos.z = originalZ;
         PlayerMove.instance.transform.localPosition = pos;
         PlayerMove.instance.DisableRequests--;
+        PlayerMove.instance.velocity = Vector2.zero;
         onArrived.Invoke();
 
         if (TryGetComponent(out Interactable interactable))

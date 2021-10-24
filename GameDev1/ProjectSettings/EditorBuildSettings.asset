@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/GarbageChuteExit.unity
     guid: 9b3404e9ee4812246b4a3e1db458ebea
+  - enabled: 1
+    path: Assets/Scenes/Week 4/SpaceStation.unity
+    guid: 04cb76d2ba65abe4cabc3f2c58191522
   m_configObjects: {}

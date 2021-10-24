@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pigeon;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -42,6 +43,13 @@ public class PlayerMove : MonoBehaviour
 
     public bool jumpEnabled = true;
 
+    [Space(20)]
+    public Pigeon.Animator animator;
+    public Sprite defaultSprite;
+    public FrameAnimation walkAnimation;
+    public FrameAnimation JumpAnimation;
+
+    [Space(20)]
     [SerializeField] int _disableRequests;
     public int DisableRequests
     {
@@ -71,15 +79,12 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (Enabled)
-        {
-            GetInput();
-        }
+        GetInput();
     }
 
     void FixedUpdate()
     {
-        if (Enabled)
+        if (Enabled && DisableRequests == 0)
         {
             Move();
         }
@@ -87,21 +92,57 @@ public class PlayerMove : MonoBehaviour
 
     void GetInput()
     {
-        sideInput = Input.GetKey(KeyCode.D) ? 1f : Input.GetKey(KeyCode.A) ? -1f : 0f;
+        sideInput = 0f;
+        if (Input.GetKey(KeyCode.D))
+        {
+            sideInput++;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            sideInput--;
+        }
+
         if (jumpEnabled && Input.GetKeyDown(KeyCode.Space))
         {
             jumpInput = true;
         }
 
-        if (sideInput == 1f)
+        if (Enabled && DisableRequests == 0)
         {
-            float scale = sprite.localScale.y;
-            sprite.localScale = new Vector3(scale, scale, scale);
+            if (sideInput == 1f)
+            {
+                float scale = sprite.localScale.y;
+                sprite.localScale = new Vector3(scale, scale, scale);
+            }
+            else if (sideInput == -1f)
+            {
+                float scale = sprite.localScale.y;
+                sprite.localScale = new Vector3(-scale, scale, scale);
+            }
         }
-        else if (sideInput == -1f)
+        else
         {
-            float scale = sprite.localScale.y;
-            sprite.localScale = new Vector3(-scale, scale, scale);
+            sideInput = 0f;
+            jumpInput = false;
+        }
+
+        int animationState = sideInput != 0f ? 1 : 0; // 0 == none, 1 == walk, 2 == jump
+
+        switch (animationState)
+        {
+            case 0:
+                if (animator.currentAnimation == walkAnimation && animator.currentAnimation != JumpAnimation)
+                {
+                    animator.Stop();
+                    animator.SetSprite(defaultSprite);
+                }
+                break;
+            case 1:
+                if (animator.currentAnimation != walkAnimation && animator.currentAnimation != JumpAnimation)
+                {
+                    animator.Play(walkAnimation);
+                }
+                break;
         }
     }
 
@@ -130,6 +171,11 @@ public class PlayerMove : MonoBehaviour
             if (jumpInput && grounded)
             {
                 velocity.y = jumpSpeed;
+
+                if (animator.currentAnimation != JumpAnimation)
+                {
+                    animator.Play(JumpAnimation);
+                }
             }
             else
             {

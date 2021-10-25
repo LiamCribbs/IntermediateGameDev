@@ -75,6 +75,18 @@ public class Elevator : MonoBehaviour, ISaveable
 
     IEnumerator MoveUpCoroutine(Vector3 targetPos, float originalZ)
     {
+        Pigeon.EaseFunctions.EvaluateMode curve;
+        float speed = this.speed;
+        if (Time.timeSinceLevelLoad == 0f)
+        {
+            curve = (x) => Pigeon.EaseFunctions.EaseInOutQuartic(x * 0.5f + 0.5f) * 2f - 1f;
+            speed *= 2f;
+        }
+        else
+        {
+            curve = Pigeon.EaseFunctions.EaseInOutQuartic;
+        }
+
         currentTargetPosition = targetPos;
 
         Vector3 initialPos = transform.localPosition;
@@ -89,7 +101,7 @@ public class Elevator : MonoBehaviour, ISaveable
                 time = 1f;
             }
 
-            transform.localPosition = Vector3.LerpUnclamped(initialPos, targetPos, Pigeon.EaseFunctions.EaseInOutQuartic(time));
+            transform.localPosition = Vector3.LerpUnclamped(initialPos, targetPos, curve(time));
 
             yield return null;
         }

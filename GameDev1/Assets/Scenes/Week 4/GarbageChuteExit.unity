@@ -603,7 +603,7 @@ MonoBehaviour:
           m_Calls: []
       predicates:
         predicates: []
-  - text: I activated <GLORB</i> mode.\w I'm pretty cool.
+  - text: I activated <i>GLORB</i> mode.\w I'm pretty cool.
     effect: 3
     effectDuration: 0
     alwaysCheckForCompletion: 0

@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/MetroStationEntrance.unity
     guid: b317a63db9916334e82c8becb7283512
+  - enabled: 1
+    path: Assets/Scenes/Week 4/MetroStationTunnel.unity
+    guid: 3ea5b7dea1d41d44d891dcc03f4273a1
   m_configObjects: {}

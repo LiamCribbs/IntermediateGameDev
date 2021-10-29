@@ -4,7 +4,7 @@ using UnityEngine;
 using Pigeon;
 using Pigeon.Math;
 
-public class DialogueEmitter : MonoBehaviour
+public class DialogueEmitter : MonoBehaviour, ISaveable
 {
     public Vector3 dialogueBoxOffset;
     public Vector2 cameraBoundsCheckPadding;
@@ -192,6 +192,29 @@ public class DialogueEmitter : MonoBehaviour
             {
                 dialogueBox.gameObject.SetActive(true);
             }
+        }
+    }
+
+    public SaveData Save()
+    {
+        return new DialogueEmitterSaveData()
+        {
+            dialogueIndex = dialogueBox != null && currentDialogue != null ? System.Array.IndexOf(dialogue, currentDialogue) : -1,
+            ended = dialogueStarted && dialogueBox == null
+        };
+    }
+
+    public void Load(SaveData baseSaveData)
+    {
+        var saveData = (DialogueEmitterSaveData)baseSaveData;
+        if (saveData.ended)
+        {
+            dialogueStarted = true;
+        }
+        else if (saveData.dialogueIndex > -1)
+        {
+            dialogueStarted = true;
+            ShowDialogue(saveData.dialogueIndex);
         }
     }
 }

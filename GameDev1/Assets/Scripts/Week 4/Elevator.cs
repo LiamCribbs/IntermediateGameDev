@@ -122,7 +122,7 @@ public class Elevator : MonoBehaviour, ISaveable
         moveCoroutine = null;
     }
 
-    SaveData ISaveable.Save()
+    public SaveData Save()
     {
         return new ElevatorSaveData()
         {

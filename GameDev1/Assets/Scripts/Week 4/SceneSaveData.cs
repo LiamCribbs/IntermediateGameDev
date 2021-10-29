@@ -16,3 +16,9 @@ public class ElevatorSaveData : SaveData
 {
     public Vector2 position;
 }
+
+public class DialogueEmitterSaveData : SaveData
+{
+    public int dialogueIndex;
+    public bool ended;
+}

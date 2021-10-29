@@ -160,7 +160,18 @@ public class DialogueBox : MonoBehaviour
 
     void Update()
     {
-        transform.sizeDelta = Vector2.Lerp(transform.sizeDelta, bounds, resizeSpeed * Time.deltaTime);
+        Vector2 sizeDelta = Vector2.Lerp(transform.sizeDelta, bounds, resizeSpeed * Time.deltaTime);
+        float minSize = bounds.x;
+        if (sizeDelta.x < minSize)
+        {
+            sizeDelta.x = minSize;
+        }
+        minSize = bounds.y;
+        if (sizeDelta.y < minSize)
+        {
+            sizeDelta.y = minSize;
+        }
+        transform.sizeDelta = sizeDelta;
 
         transform.position = DialogueManager.camera.WorldToScreenPoint(emitter.transform.position + emitter.dialogueBoxOffset);
 

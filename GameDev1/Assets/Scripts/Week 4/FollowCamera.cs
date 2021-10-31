@@ -29,12 +29,23 @@ public class FollowCamera : MonoBehaviour
     void Start()
     {
         target = PlayerMove.instance.transform;
+        SetPosition(target.position);
     }
 
     public void SetPosition(Vector2 position)
     {
         focusPosition = position;
         effectedPos = CameraEffectors.instance.HandleEffectors(camera, position);
+    }
+
+    public Vector2 GetPosition()
+    {
+        return focusPosition;
+    }
+
+    public void SetFocusSpeed(float speed)
+    {
+        focusSpeed = speed;
     }
 
     void Update()

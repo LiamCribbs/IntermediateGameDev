@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         instance.fadeCoroutine = instance.StartCoroutine(FadeSceneOut(scene));
     }
 
-    static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         instance.entrances[chosenEntrance].Invoke();
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         PlayerMove.instance.transform.position = p;
     }
 
-    static void SaveObjectData()
+    public static void SaveObjectData()
     {
         if (instance.saveables == null || instance.saveables.Count == 0)
         {

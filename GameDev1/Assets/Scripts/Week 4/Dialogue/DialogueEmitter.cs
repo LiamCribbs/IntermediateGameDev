@@ -81,6 +81,19 @@ public class DialogueEmitter : MonoBehaviour, ISaveable
         dialogueBox = null;
     }
 
+    public void QueueDialogueOverwrite(int index)
+    {
+        if (dialogueBox && currentDialogue != null)
+        {
+            dialogueBox.QueueDialogue(dialogue[index]);
+            dialogueBox.CompleteManually();
+        }
+        else
+        {
+            ShowDialogue(index);
+        }
+    }
+
     public bool IsLeftClickPressed()
     {
         leftClickCheck = true;
@@ -117,6 +130,11 @@ public class DialogueEmitter : MonoBehaviour, ISaveable
     public bool IsPlayerWithinRange()
     {
         return ((Vector2)DialogueManager.instance.player.transform.position - (Vector2)transform.position).MagFast() < visibleDistance + visibleFalloffDistance;
+    }
+
+    public bool IsPlayerWithinDistance(float distance)
+    {
+        return ((Vector2)DialogueManager.instance.player.transform.position - (Vector2)transform.position).sqrMagnitude < distance * distance;
     }
 
     public bool False() => false;

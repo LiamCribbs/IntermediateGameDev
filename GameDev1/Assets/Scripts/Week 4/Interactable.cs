@@ -18,6 +18,9 @@ public class Interactable : MonoBehaviour
     public bool disableOnInteract = true;
 
     [Space(20)]
+    [TextArea] public string customText;
+
+    [Space(20)]
     public UnityEngine.Events.UnityEvent<Interactable> onInteract;
 
     void OnEnable()
@@ -86,6 +89,19 @@ public class Interactable : MonoBehaviour
         if (box == null)
         {
             box = InteractableManager.GetBox();
+        }
+
+        if (string.IsNullOrEmpty(customText))
+        {
+            if (box.title.text != "E")
+            {
+                box.title.text = "E";
+                ((RectTransform)box.transform).sizeDelta = new Vector2(100f, 100f);
+            }
+        }
+        else
+        {
+            box.SetText(customText);
         }
 
         fadeCoroutine = StartCoroutine(FadeBoxIn());

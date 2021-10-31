@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 710073216}
   - component: {fileID: 710073215}
   m_Layer: 0
-  m_Name: club sign
+  m_Name: metro sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

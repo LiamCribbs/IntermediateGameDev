@@ -199,6 +199,16 @@ public class DialogueBox : MonoBehaviour
         //}
     }
 
+    public void CompleteManually()
+    {
+        canComplete = true;
+        if (checkCompleteConditionCoroutine != null)
+        {
+            StopCoroutine(checkCompleteConditionCoroutine);
+            checkCompleteConditionCoroutine = null;
+        }
+    }
+
     IEnumerator CheckCompleteCondition()
     {
         while (true)

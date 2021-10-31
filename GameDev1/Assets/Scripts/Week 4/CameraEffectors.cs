@@ -43,30 +43,40 @@ public class CameraEffectors : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < bounds.Count; i++)
+        if (bounds.Count > 0)
         {
-            var bound = bounds[i];
-            Vector2 boundPos = bound.transform.position;
+            CameraBounds closestBounds = bounds[0];
+
+            for (int i = 1; i < bounds.Count; i++)
+            {
+                Vector3 playerPos = PlayerMove.instance.transform.position;
+                if ((bounds[i].transform.position - playerPos).sqrMagnitude < (closestBounds.transform.position - playerPos).sqrMagnitude)
+                {
+                    closestBounds = bounds[i];
+                }
+            }
+
+            Vector2 boundPos = closestBounds.transform.position;
 
             // X constraints
-            if (camPos.x + camSize.x > boundPos.x + bound.size.x)
+            if (camPos.x + camSize.x > boundPos.x + closestBounds.size.x)
             {
-                camPos.x = boundPos.x + bound.size.x - camSize.x;
+                camPos.x = boundPos.x + closestBounds.size.x - camSize.x;
             }
-            else if (camPos.x - camSize.x < boundPos.x - bound.size.x)
+            else if (camPos.x - camSize.x < boundPos.x - closestBounds.size.x)
             {
-                camPos.x = boundPos.x - bound.size.x + camSize.x;
+                camPos.x = boundPos.x - closestBounds.size.x + camSize.x;
             }
 
             // Y constraints
             //this.Print(camPos.y - camSize.y, boundPos.y - bound.size.y);
-            if (camPos.y + camSize.y > boundPos.y + bound.size.y)
+            if (camPos.y + camSize.y > boundPos.y + closestBounds.size.y)
             {
-                camPos.y = boundPos.y + bound.size.y - camSize.y;
+                camPos.y = boundPos.y + closestBounds.size.y - camSize.y;
             }
-            else if (camPos.y - camSize.y < boundPos.y - bound.size.y)
+            else if (camPos.y - camSize.y < boundPos.y - closestBounds.size.y)
             {
-                camPos.y = boundPos.y - bound.size.y + camSize.y;
+                camPos.y = boundPos.y - closestBounds.size.y + camSize.y;
             }
 
             //camera.transform.position = camPos;

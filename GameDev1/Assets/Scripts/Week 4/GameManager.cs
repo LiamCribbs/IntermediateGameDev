@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     Coroutine bulgeDoongesTextCoroutine;
     const float DoongesTextBulgeSpeed1 = 5.5f;
     const float DoongesTextBulgeSpeed2 = 1f;
-    const float DoongesTextBulgeScale = 2f;
+    const float DoongesTextBulgeScale = 2.25f;
 
     void Awake()
     {

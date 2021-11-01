@@ -13,6 +13,12 @@ public class Collectable : MonoBehaviour, ISaveable
         gameObject.SetActive(false);
     }
 
+    public void PlaySound(AudioClip clip)
+    {
+        var audio = new GameObject("Sound").AddComponent<AudioSource>();
+        audio.PlayOneShot(clip, 0.5f);
+    }
+
     public void Load(SaveData saveData)
     {
         if (((CollectableSaveData)saveData).collected)

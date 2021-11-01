@@ -1908,8 +1908,9 @@ GameObject:
   - component: {fileID: 923766679}
   - component: {fileID: 923766678}
   - component: {fileID: 923766680}
+  - component: {fileID: 923766681}
   m_Layer: 0
-  m_Name: Crumbgle (1)
+  m_Name: Scud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2175,8 +2176,8 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 923766678}
             m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-            m_MethodName: ShowNextDialogue
-            m_Mode: 1
+            m_MethodName: ShowFutureDialogue
+            m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2437,7 +2438,19 @@ MonoBehaviour:
           m_CallState: 2
     onFinishedWriting:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 923766681}
+          m_TargetAssemblyTypeName: SceneLoadCaller, Assembly-CSharp
+          m_MethodName: SceneManagerLoadScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onCompleteEvent:
       action:
         m_PersistentCalls:
@@ -2600,7 +2613,19 @@ MonoBehaviour:
           m_CallState: 2
     onFinishedWriting:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 923766681}
+          m_TargetAssemblyTypeName: SceneLoadCaller, Assembly-CSharp
+          m_MethodName: SceneManagerLoadScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onCompleteEvent:
       action:
         m_PersistentCalls:
@@ -2782,6 +2807,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &923766681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923766676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7231f3e26bee7154a81453c3043649a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene:
+    sceneAsset: {fileID: 102900000, guid: 2d60747052b0e4948a5bdaf6ff6e0daf, type: 3}
+    scenePath: Assets/Scenes/Week 4/WinMenu.unity
+  entrance: 0
 --- !u!1 &926671773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,7 +3940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559901003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.49, y: -4.86, z: 0}
+  m_LocalPosition: {x: 3.14, y: -4.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1077021774}
@@ -4486,6 +4527,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2000407
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1938187349}
+        m_TargetAssemblyTypeName: Collectable, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: aecd6eba3b76e3d4ea38b88fd598374b, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

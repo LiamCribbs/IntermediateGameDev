@@ -11,4 +11,9 @@ public class SceneLoadCaller : MonoBehaviour
     {
         GameManager.LoadScene(scene, entrance);
     }
+
+    public void SceneManagerLoadScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+    }
 }

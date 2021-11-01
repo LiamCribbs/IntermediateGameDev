@@ -241,6 +241,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 10
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -358,7 +359,7 @@ MonoBehaviour:
             m_CallState: 2
       predicates:
         predicates: []
-  - text: It causes every atom to say hello every other atom\w, a task so unimaginably
+  - text: It causes every atom to say hello to every other atom\w, a task so unimaginably
       power-consuming that reality shorts out, imploding every point in space at
       the same instant!
     effect: 0

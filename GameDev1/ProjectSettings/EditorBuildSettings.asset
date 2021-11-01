@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Week 4/MainMenu.unity
+    guid: b9b0f8079fad6eb4ab0b4d369348fc10
+  - enabled: 1
     path: Assets/Scenes/Week 4/Introduction.unity
     guid: 5053e3699f2cf9640b7740592702b213
   - enabled: 1
@@ -65,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/ScudsHouse.unity
     guid: 5f51291572a4cdd4b8a14678d5f92c93
+  - enabled: 1
+    path: Assets/Scenes/Week 4/WinMenu.unity
+    guid: 2d60747052b0e4948a5bdaf6ff6e0daf
   m_configObjects: {}

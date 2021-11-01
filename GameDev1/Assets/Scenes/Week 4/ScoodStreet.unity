@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 69803551}
   - component: {fileID: 69803550}
-  - component: {fileID: 69803549}
   - component: {fileID: 69803552}
   m_Layer: 0
   m_Name: Grungle
@@ -141,26 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!95 &69803549
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69803548}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cc11f3f7fe5c9ec4c91761d25bcfc038, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_IsActive: 1
 --- !u!212 &69803550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -203,7 +183,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ec1be6daf8687bd459685a136139383e, type: 3}
-  m_Color: {r: 0.3491331, g: 0.29383236, b: 0.8773585, a: 1}
+  m_Color: {r: 0.094605245, g: 0.5566038, b: 0.028880388, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -220,13 +200,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69803548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.25, y: -3.53, z: 8.1}
+  m_LocalRotation: {x: -0, y: -0.26034755, z: -0, w: 0.96551496}
+  m_LocalPosition: {x: -12.44, y: -1.54, z: 8.1}
   m_LocalScale: {x: 0.43528387, y: 0.43528387, z: 0.43528387}
   m_Children: []
   m_Father: {fileID: 118109586}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.181, z: 0}
 --- !u!114 &69803552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +223,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 10
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -252,7 +233,8 @@ MonoBehaviour:
           _PersistentArguments: []
       Operator: 0
   dialogue:
-  - text: Whoa there buddy
+  - text: The Chief of <i>Glorbles</i> for Crime says that crime rates are down to
+      0%!
     effect: 0
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -261,8 +243,16 @@ MonoBehaviour:
       - predicate:
           _PersistentCalls:
           - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
+            _MethodName: WaitAfterWriting
+            _PersistentArguments:
+            - _Type: 5
+              _Int: 0
+              _String: 
+              _X: 4
+              _Y: 0
+              _Z: 0
+              _W: 0
+              _Object: {fileID: 0}
         Operator: 0
     response1: 
     onResponse1Chosen:
@@ -302,7 +292,7 @@ MonoBehaviour:
             m_CallState: 2
       predicates:
         predicates: []
-  - text: You think you can just use elevators?
+  - text: This is the best news all cycle!
     effect: 0
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -311,70 +301,16 @@ MonoBehaviour:
       - predicate:
           _PersistentCalls:
           - _Target: {fileID: 69803552}
-            _MethodName: False
-            _PersistentArguments: []
-        Operator: 0
-    response1: I'm sorry
-    onResponse1Chosen:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 69803552}
-          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-          m_MethodName: QueueFutureDialogue
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    response2: Fuck you
-    onResponse2Chosen:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 69803552}
-          m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-          m_MethodName: QueueFutureDialogue
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 3
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    onStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onFinishedWriting:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleteEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-    onClearedEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-  - text: Oh you will be, bucko. I'm watching you
-    effect: 0
-    effectDuration: 0
-    alwaysCheckForCompletion: 0
-    completeCondition:
-      predicates:
-      - predicate:
-          _PersistentCalls:
-          - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
+            _MethodName: WaitAfterWriting
+            _PersistentArguments:
+            - _Type: 5
+              _Int: 0
+              _String: 
+              _X: 2
+              _Y: 0
+              _Z: 0
+              _W: 0
+              _Object: {fileID: 0}
         Operator: 0
     response1: 
     onResponse1Chosen:
@@ -407,14 +343,15 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
+              m_IntArgument: 0
               m_FloatArgument: 0
-              m_StringArgument: 
+              m_StringArgument: hey kid
               m_BoolArgument: 0
             m_CallState: 2
       predicates:
         predicates: []
-  - text: Don't ever think you're safe from me.
+  - text: I can finally throw away my keys!\w\w Perhaps I'll invest in an offworld
+      amusement park!
     effect: 0
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -423,8 +360,74 @@ MonoBehaviour:
       - predicate:
           _PersistentCalls:
           - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
+            _MethodName: WaitAfterWriting
+            _PersistentArguments:
+            - _Type: 5
+              _Int: 0
+              _String: 
+              _X: 5
+              _Y: 0
+              _Z: 0
+              _W: 0
+              _Object: {fileID: 0}
+        Operator: 0
+    response1: 
+    onResponse1Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    response2: 
+    onResponse2Chosen:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onFinishedWriting:
+      m_PersistentCalls:
+        m_Calls: []
+    onCompleteEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls: []
+      predicates:
+        predicates: []
+    onClearedEvent:
+      action:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 69803552}
+            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
+            m_MethodName: ShowNextDialogue
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: hey kid
+              m_BoolArgument: 0
+            m_CallState: 2
+      predicates:
+        predicates: []
+  - text: Well at least I don't have astral boomerangs for eyes!
+    effect: 0
+    effectDuration: 0
+    alwaysCheckForCompletion: 0
+    completeCondition:
+      predicates:
+      - predicate:
+          _PersistentCalls:
+          - _Target: {fileID: 69803552}
+            _MethodName: WaitAfterWriting
+            _PersistentArguments:
+            - _Type: 5
+              _Int: 0
+              _String: 
+              _X: 2.5
+              _Y: 0
+              _Z: 0
+              _W: 0
+              _Object: {fileID: 0}
         Operator: 0
     response1: 
     onResponse1Chosen:
@@ -460,156 +463,6 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: hey kid
-              m_BoolArgument: 0
-            m_CallState: 2
-      predicates:
-        predicates: []
-  - text: You <i>little fucking piece of shit</i>!
-    effect: 0
-    effectDuration: 0
-    alwaysCheckForCompletion: 0
-    completeCondition:
-      predicates:
-      - predicate:
-          _PersistentCalls:
-          - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
-        Operator: 0
-    response1: 
-    onResponse1Chosen:
-      m_PersistentCalls:
-        m_Calls: []
-    response2: 
-    onResponse2Chosen:
-      m_PersistentCalls:
-        m_Calls: []
-    onStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onFinishedWriting:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleteEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-    onClearedEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 69803552}
-            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-            m_MethodName: ShowNextDialogue
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      predicates:
-        predicates: []
-  - text: You will regret the day you used an elevator!
-    effect: 0
-    effectDuration: 0
-    alwaysCheckForCompletion: 0
-    completeCondition:
-      predicates:
-      - predicate:
-          _PersistentCalls:
-          - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
-        Operator: 0
-    response1: 
-    onResponse1Chosen:
-      m_PersistentCalls:
-        m_Calls: []
-    response2: 
-    onResponse2Chosen:
-      m_PersistentCalls:
-        m_Calls: []
-    onStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onFinishedWriting:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleteEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-    onClearedEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 69803552}
-            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-            m_MethodName: ShowNextDialogue
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      predicates:
-        predicates: []
-  - text: Watch your back, <i>fuckturd</i>.\w I'll be coming for you.
-    effect: 0
-    effectDuration: 0
-    alwaysCheckForCompletion: 0
-    completeCondition:
-      predicates:
-      - predicate:
-          _PersistentCalls:
-          - _Target: {fileID: 69803552}
-            _MethodName: IsLeftClickPressed
-            _PersistentArguments: []
-        Operator: 0
-    response1: 
-    onResponse1Chosen:
-      m_PersistentCalls:
-        m_Calls: []
-    response2: 
-    onResponse2Chosen:
-      m_PersistentCalls:
-        m_Calls: []
-    onStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onFinishedWriting:
-      m_PersistentCalls:
-        m_Calls: []
-    onCompleteEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls: []
-      predicates:
-        predicates: []
-    onClearedEvent:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 69803552}
-            m_TargetAssemblyTypeName: DialogueEmitter, Assembly-CSharp
-            m_MethodName: ReturnBox
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
       predicates:
@@ -642,6 +495,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 69803551}
+  - {fileID: 2034359816}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3833,6 +3687,89 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2034359815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2034359816}
+  - component: {fileID: 2034359817}
+  m_Layer: 0
+  m_Name: Grungle (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2034359816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034359815}
+  m_LocalRotation: {x: -0, y: 0.16529411, z: -0, w: 0.9862444}
+  m_LocalPosition: {x: -10.91, y: -1.35, z: 8.16}
+  m_LocalScale: {x: 0.32211006, y: 0.32211006, z: 0.32211006}
+  m_Children: []
+  m_Father: {fileID: 118109586}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 19.029, z: 0}
+--- !u!212 &2034359817
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034359815}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: fbef09017f884ba4987870b248c92586, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ec1be6daf8687bd459685a136139383e, type: 3}
+  m_Color: {r: 0.3659923, g: 0.46226418, b: 0.06323426, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4, y: 6.12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!114 &2062942133 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}

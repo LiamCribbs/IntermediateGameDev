@@ -23,6 +23,10 @@ public class DialogueManager : MonoBehaviour
         pool = new Stack<DialogueBox>(2);
 
         camera = Camera.main;
+
+        DialogueBox box = Instantiate(instance.dialogueBoxPrefab, instance.canvas).GetComponent<DialogueBox>();
+        box.gameObject.SetActive(false);
+        pool.Push(box);
     }
 
     /// <summary>

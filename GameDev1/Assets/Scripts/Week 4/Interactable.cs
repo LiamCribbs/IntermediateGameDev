@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    InteractableBox box;
+    [System.NonSerialized] public InteractableBox box;
     Coroutine fadeCoroutine;
 
     public Vector2 boxOffset;
@@ -71,7 +71,7 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!disabled && collision == PlayerMove.instance.collider)
+        if (!disabled && gameObject.activeSelf && collision == PlayerMove.instance.collider)
         {
             Disable();
         }

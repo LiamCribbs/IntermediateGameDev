@@ -21,4 +21,15 @@ public class DialogueEmitterSaveData : SaveData
 {
     public int dialogueIndex;
     public bool ended;
+    public Vector3 position;
+}
+
+public class CollectableSaveData : SaveData
+{
+    public bool collected;
+}
+
+public class ScudsRoomManagerSaveData : SaveData
+{
+    public bool hasFallGuyFallen;
 }

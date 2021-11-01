@@ -2693,6 +2693,7 @@ MonoBehaviour:
   saveables:
   - {fileID: 2406015740668301619}
   - {fileID: 69803552}
+  doongesText: {fileID: 0}
 --- !u!1 &642816640
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/ScoodStreet.unity
     guid: b515851a6e60b484a9394be25732262c
+  - enabled: 1
+    path: Assets/Scenes/Week 4/ScudsHouse.unity
+    guid: 5f51291572a4cdd4b8a14678d5f92c93
   m_configObjects: {}

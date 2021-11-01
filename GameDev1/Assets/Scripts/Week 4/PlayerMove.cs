@@ -49,6 +49,11 @@ public class PlayerMove : MonoBehaviour
     public FrameAnimation walkAnimation;
     public FrameAnimation JumpAnimation;
 
+    [Space(10)]
+    public new AudioSource audio;
+    public AudioClip[] footstepSounds;
+    int lastFootstepIndex = -1;
+
     [Space(20)]
     [SerializeField] int _disableRequests;
     public int DisableRequests
@@ -75,6 +80,16 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         instance = this;
+    }
+
+    void OnEnable()
+    {
+        animator.onSpriteChanged += OnAnimationFrame;
+    }
+
+    void OnDisable()
+    {
+        animator.onSpriteChanged -= OnAnimationFrame;
     }
 
     void Update()
@@ -143,6 +158,20 @@ public class PlayerMove : MonoBehaviour
                     animator.Play(walkAnimation);
                 }
                 break;
+        }
+    }
+
+    void OnAnimationFrame(int animIndex)
+    {
+        if (animator.currentAnimation == walkAnimation && (animIndex == 0 || animIndex == 4))
+        {
+            int index;
+            do
+            {
+                index = Random.Range(0, footstepSounds.Length);
+            } while (index == lastFootstepIndex);
+            audio.PlayOneShot(footstepSounds[index]);
+            lastFootstepIndex = index;
         }
     }
 

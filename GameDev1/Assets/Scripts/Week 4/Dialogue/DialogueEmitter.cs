@@ -15,7 +15,10 @@ public class DialogueEmitter : MonoBehaviour, ISaveable
     [System.NonSerialized] protected DialogueBox dialogueBox;
     [System.NonSerialized] public DialogueData currentDialogue;
 
-    [Space(30)]
+    [Space(10)]
+    public bool savePosition;
+
+    [Space(10)]
     public Predicates startDialoguePredicate;
     protected bool dialogueStarted;
 
@@ -218,7 +221,8 @@ public class DialogueEmitter : MonoBehaviour, ISaveable
         return new DialogueEmitterSaveData()
         {
             dialogueIndex = dialogueBox != null && currentDialogue != null ? System.Array.IndexOf(dialogue, currentDialogue) : -1,
-            ended = dialogueStarted && dialogueBox == null
+            ended = dialogueStarted && dialogueBox == null,
+            position = savePosition ? transform.localPosition : new Vector3(float.NaN, float.NaN)
         };
     }
 
@@ -233,6 +237,11 @@ public class DialogueEmitter : MonoBehaviour, ISaveable
         {
             dialogueStarted = true;
             ShowDialogue(saveData.dialogueIndex);
+        }
+
+        if (savePosition)
+        {
+            transform.localPosition = saveData.position;
         }
     }
 }

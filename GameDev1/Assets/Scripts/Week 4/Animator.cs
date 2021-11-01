@@ -17,7 +17,7 @@ namespace Pigeon
 
         Coroutine animationCoroutine;
 
-        public System.Action onSpriteChanged;
+        public System.Action<int> onSpriteChanged;
         public System.Action onAnimationComplete;
 
         public bool IsPlaying
@@ -82,7 +82,7 @@ namespace Pigeon
                 for (int i = 0; i < length; i++)
                 {
                     renderer.sprite = currentAnimation.sprites[i];
-                    onSpriteChanged?.Invoke();
+                    onSpriteChanged?.Invoke(i);
                     if (i < length - 1)
                     {
                         yield return wait;
@@ -96,7 +96,7 @@ namespace Pigeon
                     for (int i = length - 1; i >= 0; i--)
                     {
                         renderer.sprite = currentAnimation.sprites[i];
-                        onSpriteChanged?.Invoke();
+                        onSpriteChanged?.Invoke(i);
                         if (i > 0)
                         {
                             yield return wait;

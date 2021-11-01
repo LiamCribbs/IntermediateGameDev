@@ -462,7 +462,7 @@ MonoBehaviour:
       predicates:
         predicates: []
   - text: Every fiber of your being will wish for death, but it will not come.\w
-      You will be both instantly dead and alive forever!
+      You will be both instantly dead and forever alive!
     effect: 0
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -1208,6 +1208,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1884302227}
+  - {fileID: 1308705751}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1721,6 +1722,7 @@ MonoBehaviour:
         m_CallState: 2
   saveables:
   - {fileID: 69803552}
+  doongesText: {fileID: 1308705752}
 --- !u!1 &722875786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,6 +2224,119 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1308705750
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 313019122}
+    m_Modifications:
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999962350749304724, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+      propertyPath: m_Name
+      value: DoongeIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+--- !u!224 &1308705751 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5999962350749304723, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+  m_PrefabInstance: {fileID: 1308705750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1308705752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5999962352615387135, guid: 39c171c1f46511e4fabb35e0fa0f8ab7, type: 3}
+  m_PrefabInstance: {fileID: 1308705750}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1323091630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,6 +2802,7 @@ MonoBehaviour:
   interactKey: 101
   disabled: 0
   disableOnInteract: 1
+  customText: 
   onInteract:
     m_PersistentCalls:
       m_Calls:

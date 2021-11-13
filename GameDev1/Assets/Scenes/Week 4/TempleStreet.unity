@@ -242,6 +242,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 10
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -301,7 +302,7 @@ MonoBehaviour:
             m_CallState: 2
       predicates:
         predicates: []
-  - text: You!\w Save yourself from the <i>APOCALYPSE</i>!\w ENTER!
+  - text: You!\w Save yourself from the <i>APOCALYPSE</i>!
     effect: 1
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -351,7 +352,7 @@ MonoBehaviour:
             m_CallState: 2
       predicates:
         predicates: []
-  - text: ENTER and discover <i>SALVATION</i>!
+  - text: <i>ENTER</i> and discover <i>SALVATION</i>!
     effect: 1
     effectDuration: 0
     alwaysCheckForCompletion: 0
@@ -401,7 +402,7 @@ MonoBehaviour:
             m_CallState: 2
       predicates:
         predicates: []
-  - text: ENTER and discover SALVATION!
+  - text: <i>ENTER</i> and discover THE TRUTH!
     effect: 1
     effectDuration: 0
     alwaysCheckForCompletion: 0

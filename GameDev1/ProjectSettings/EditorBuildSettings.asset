@@ -71,4 +71,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/WinMenu.unity
     guid: 2d60747052b0e4948a5bdaf6ff6e0daf
+  - enabled: 1
+    path: Assets/Scenes/Week 4/MetroStationTunnelZK.unity
+    guid: f10093ad7e2615c4a9c5010181e86991
+  - enabled: 1
+    path: Assets/Scenes/Week 4/MetroStationTunnelEQ.unity
+    guid: 6c14a50e6834fed4e938a16a6e653946
   m_configObjects: {}

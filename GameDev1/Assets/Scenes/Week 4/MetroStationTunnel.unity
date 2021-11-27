@@ -223,6 +223,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 5
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -1859,10 +1860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1688815941}
     m_Modifications:
-    - target: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
-      propertyPath: disabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
       propertyPath: targetPos.y
       value: 4.95
@@ -1978,6 +1975,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2406015740958737951, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
   m_PrefabInstance: {fileID: 385979846}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &385979848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 385979846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c85926f18588745bc83a35a0a17ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &385979849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 385979846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4fc6ef6c22621498e905259e297fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &407334129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2650,110 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1764196745}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1764196746}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: DisableInteractions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2056803041}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2056803042}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: DisableInteractions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 385979848}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 385979849}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: DisableInteractions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 933561452}
+        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
+        m_MethodName: MoveUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 933561453}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: DisableInteractions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   saveables:
   - {fileID: 69803552}
   - {fileID: 961722960}
@@ -2901,9 +3024,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene:
-    sceneAsset: {fileID: 102900000, guid: eb073ecafc0e0df459e2c8a8a8878961, type: 3}
-    scenePath: Assets/Scenes/Week 4/MetroStationTunnelLD.unity
-  entrance: 4
+    sceneAsset: {fileID: 102900000, guid: 6c14a50e6834fed4e938a16a6e653946, type: 3}
+    scenePath: Assets/Scenes/Week 4/MetroStationTunnelEQ.unity
+  entrance: 0
 --- !u!61 &907470134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3030,10 +3153,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1688815941}
     m_Modifications:
-    - target: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
-      propertyPath: disabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
       propertyPath: targetPos.y
       value: 4.95
@@ -3149,6 +3268,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2406015740958737951, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
   m_PrefabInstance: {fileID: 933561450}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &933561452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 933561450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c85926f18588745bc83a35a0a17ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &933561453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 933561450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4fc6ef6c22621498e905259e297fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &945618374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,9 +3335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene:
-    sceneAsset: {fileID: 102900000, guid: eb073ecafc0e0df459e2c8a8a8878961, type: 3}
-    scenePath: Assets/Scenes/Week 4/MetroStationTunnelLD.unity
-  entrance: 2
+    sceneAsset: {fileID: 102900000, guid: f10093ad7e2615c4a9c5010181e86991, type: 3}
+    scenePath: Assets/Scenes/Week 4/MetroStationTunnelZK.unity
+  entrance: 0
 --- !u!61 &945618377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3271,6 +3412,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 5
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -3945,9 +4087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene:
-    sceneAsset: {fileID: 102900000, guid: eb073ecafc0e0df459e2c8a8a8878961, type: 3}
-    scenePath: Assets/Scenes/Week 4/MetroStationTunnelLD.unity
-  entrance: 3
+    sceneAsset: {fileID: 102900000, guid: f10093ad7e2615c4a9c5010181e86991, type: 3}
+    scenePath: Assets/Scenes/Week 4/MetroStationTunnelZK.unity
+  entrance: 1
 --- !u!61 &1048314975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5354,10 +5496,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1688815941}
     m_Modifications:
-    - target: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
-      propertyPath: disabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
       propertyPath: targetPos.y
       value: 4.95
@@ -5473,6 +5611,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2406015740958737951, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
   m_PrefabInstance: {fileID: 1764196743}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1764196745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 1764196743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c85926f18588745bc83a35a0a17ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1764196746 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 1764196743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4fc6ef6c22621498e905259e297fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1809704021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5662,9 +5822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene:
-    sceneAsset: {fileID: 102900000, guid: eb073ecafc0e0df459e2c8a8a8878961, type: 3}
-    scenePath: Assets/Scenes/Week 4/MetroStationTunnelLD.unity
-  entrance: 5
+    sceneAsset: {fileID: 102900000, guid: 6c14a50e6834fed4e938a16a6e653946, type: 3}
+    scenePath: Assets/Scenes/Week 4/MetroStationTunnelEQ.unity
+  entrance: 1
 --- !u!61 &1817543195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6291,10 +6451,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1688815941}
     m_Modifications:
-    - target: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
-      propertyPath: disabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
       propertyPath: targetPos.y
       value: 4.95
@@ -6410,6 +6566,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2406015740958737951, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
   m_PrefabInstance: {fileID: 2056803039}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2056803041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737923, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 2056803039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c85926f18588745bc83a35a0a17ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2056803042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2406015740958737920, guid: 39ed47e568964f940b60fa25aea29ee4, type: 3}
+  m_PrefabInstance: {fileID: 2056803039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4fc6ef6c22621498e905259e297fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8455705450097829626
 PrefabInstance:
   m_ObjectHideFlags: 0

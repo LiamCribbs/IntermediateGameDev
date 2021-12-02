@@ -77,4 +77,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/MetroStationTunnelEQ.unity
     guid: 6c14a50e6834fed4e938a16a6e653946
+  - enabled: 1
+    path: Assets/Scenes/Week 4/ScoodOverlook.unity
+    guid: e4129256f77381b4b8757430d7bbf31c
   m_configObjects: {}

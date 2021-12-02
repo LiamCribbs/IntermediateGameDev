@@ -1315,7 +1315,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  saveables: []
+  saveables:
+  - {fileID: 3526115349021717796}
   doongesText: {fileID: 1900560203}
 --- !u!1 &765069875
 GameObject:
@@ -1596,6 +1597,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 5
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -2648,6 +2650,7 @@ MonoBehaviour:
   cameraBoundsCheckPadding: {x: 0.5, y: 0}
   visibleDistance: 5
   visibleFalloffDistance: 2
+  savePosition: 0
   startDialoguePredicate:
     predicates:
     - predicate:
@@ -5119,8 +5122,47 @@ PrefabInstance:
       propertyPath: text1
       value: 
       objectReference: {fileID: 1945866963}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TrainLeaveStation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526115349224181525, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+      propertyPath: onTimerComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+--- !u!114 &3526115349021717796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3526115349224181526, guid: 91a06efc0ed36ea45b69d7ddff112918, type: 3}
+  m_PrefabInstance: {fileID: 3526115349021717795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f82578ceb353543a4c5ee36700ee8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8455705450097829626
 PrefabInstance:
   m_ObjectHideFlags: 0

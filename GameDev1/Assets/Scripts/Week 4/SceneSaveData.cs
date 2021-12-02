@@ -33,3 +33,8 @@ public class ScudsRoomManagerSaveData : SaveData
 {
     public bool hasFallGuyFallen;
 }
+
+public class TrainLeaveStationSaveData : SaveData
+{
+    public float timer;
+}

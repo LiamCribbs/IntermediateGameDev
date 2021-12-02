@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainTimer : MonoBehaviour
+public class TrainTimer : MonoBehaviour, ISaveable
 {
     float time;
     public float startTime;
@@ -28,6 +28,26 @@ public class TrainTimer : MonoBehaviour
                 onTimerComplete.Invoke();
             }
 
+            text0.text = Mathf.Round(time) + "s";
+            text1.text = text0.text;
+        }
+    }
+
+    public SaveData Save()
+    {
+        return new TrainLeaveStationSaveData()
+        {
+            timer = time
+        };
+    }
+
+    public void Load(SaveData baseSaveData)
+    {
+        var saveData = (TrainLeaveStationSaveData)baseSaveData;
+        time = saveData.timer;
+        if (time <= 0f)
+        {
+            onTimerComplete.Invoke();
             text0.text = Mathf.Round(time) + "s";
             text1.text = text0.text;
         }

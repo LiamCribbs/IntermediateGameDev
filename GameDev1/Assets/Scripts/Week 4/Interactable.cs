@@ -43,8 +43,9 @@ public class Interactable : MonoBehaviour
     {
         if (!disabled)
         {
-            if (inRange && Input.GetKeyDown(interactKey))
+            if (inRange && Input.GetKeyDown(interactKey) && !GameManager.interactedThisFrame)
             {
+                GameManager.interactedThisFrame = true;
                 onInteract?.Invoke(this);
 
                 if (disableOnInteract)

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static bool interactedThisFrame;
 
     public UnityEngine.UI.Graphic fadeGraphic;
     Coroutine fadeCoroutine;
@@ -41,6 +42,11 @@ public class GameManager : MonoBehaviour
         {
             doongesText.text = string.Format("{0:n0}", doonges);
         }
+    }
+
+    void LateUpdate()
+    {
+        interactedThisFrame = false;
     }
 
     public void SetDoonges(int numDoonges)

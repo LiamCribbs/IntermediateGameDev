@@ -223,7 +223,7 @@ public class Tree : MonoBehaviour
         }
         else
         {
-            texture.Resize(width, height);
+            texture.Reinitialize(width, height);
         }
 
         Color[] pixels = new Color[width * height];

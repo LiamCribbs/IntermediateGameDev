@@ -80,4 +80,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week 4/ScoodOverlook.unity
     guid: e4129256f77381b4b8757430d7bbf31c
+  - enabled: 1
+    path: Assets/Scenes/Week 4/Garden.unity
+    guid: 8c69c6826e580f248b7cea6c6cd7b8d5
+  - enabled: 1
+    path: Assets/Scenes/Week 4/GardenersHouse.unity
+    guid: 0429352568015f54cbe2de8b0081f2b0
   m_configObjects: {}

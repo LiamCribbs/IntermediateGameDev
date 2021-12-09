@@ -53,7 +53,6 @@ public class TheGrabber : MonoBehaviour
 
             float t = Pigeon.EaseFunctions.EaseInQuartic(time);
 
-            pos.x = PlayerMove.instance.transform.position.x;
             pos.y = Mathf.LerpUnclamped(bottomY, topY, t);
             transform.position = pos;
 

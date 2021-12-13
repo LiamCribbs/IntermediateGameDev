@@ -212,7 +212,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4fe165d20bf821e439a542f94c83a43d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2803e03d70d7f5f4bacda62fcf59f3a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -231,8 +231,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127003915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1.6541, y: 1.6541, z: 1.6541}
+  m_LocalPosition: {x: 0, y: 0.19, z: 10}
+  m_LocalScale: {x: 3.1135736, y: 3.1135736, z: 3.1135736}
   m_Children: []
   m_Father: {fileID: 1688815941}
   m_RootOrder: 3
@@ -2153,11 +2153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093029098627188580, guid: 25d4d65adb94dac48b34da9867c9658b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.65
+      value: 6.84
       objectReference: {fileID: 0}
     - target: {fileID: 1093029098627188580, guid: 25d4d65adb94dac48b34da9867c9658b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87
+      value: -2.16
       objectReference: {fileID: 0}
     - target: {fileID: 1093029098627188580, guid: 25d4d65adb94dac48b34da9867c9658b, type: 3}
       propertyPath: m_LocalPosition.z

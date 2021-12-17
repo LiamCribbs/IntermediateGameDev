@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleTextGroup : MonoBehaviour
 {
-    static bool deactivated;
+    public static bool deactivated;
 
     public CanvasGroup group;
     public float fadeSpeed;

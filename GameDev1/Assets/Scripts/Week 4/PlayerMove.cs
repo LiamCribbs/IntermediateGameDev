@@ -72,6 +72,17 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+
+    public void RequestDisable()
+    {
+        DisableRequests++;
+    }
+
+    public void RequestEnable()
+    {
+        DisableRequests--;
+    }
+
     public bool Enabled
     {
         get => _disableRequests == 0;
